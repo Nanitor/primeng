@@ -280,6 +280,8 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
 
     @ViewChild('scrollableView') scrollableView: ScrollableView;
 
+    @ViewChild('scrollableView') scrollableView: ScrollableView;
+
     @ContentChildren(PrimeTemplate) templates: QueryList<PrimeTemplate>;
 
     _value: any[] = [];
@@ -1466,6 +1468,15 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
         delete this.editingRowKeys[dataKeyValue];
     }
 
+    public getScrollPosition() {
+        return this.scrollableView.getScrollPosition();
+    }
+
+    public setScrollPosition(scrollPosition: number) {
+        let scrollableViewComponent: ScrollableView = this.scrollableView as ScrollableView;
+        scrollableViewComponent.setScrollPosition(scrollPosition);
+    }
+
     toggleRow(rowData: any, event?: Event) {
         if(!this.dataKey) {
             throw new Error('dataKey must be defined to use row expansion');
@@ -2379,6 +2390,30 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
                 });
             }
         }
+    }
+
+    getScrollPosition() {
+        return this.scrollBodyViewChild.nativeElement.scrollTop;
+    }
+
+    setScrollPosition(scrollposition: number) {
+        let pageHeight = this.dt.virtualRowHeight * this.dt.rows;
+        let virtualTableHeight = this.domHandler.getOuterHeight(this.virtualScrollerViewChild.nativeElement);
+        let pageCount = (virtualTableHeight / pageHeight)||1;
+
+        this.scrollBodyViewChild.nativeElement.style.top = scrollposition + 'px';
+
+        let page = Math.floor((this.scrollBodyViewChild.nativeElement.scrollTop * pageCount) / (this.scrollBodyViewChild.nativeElement.scrollHeight)) + 1;
+        this.dt.handleVirtualScroll({
+            page: page,
+            callback: () => {
+                this.scrollTableViewChild.nativeElement.style.top = ((page - 1) * pageHeight) + 'px';
+
+                if (this.frozenSiblingBody) {
+                    (<HTMLElement> this.frozenSiblingBody.children[0]).style.top = this.scrollTableViewChild.nativeElement.style.top;
+                }
+            }
+        });
     }
 
     setScrollHeight() {
