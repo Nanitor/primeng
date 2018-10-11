@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-      "primeng2": {
+      "primeng": {
         "root": "",
         "sourceRoot": "src",
         "projectType": "application",
@@ -13,7 +13,7 @@
           "build": {
             "builder": "@angular-devkit/build-angular:browser",
             "options": {
-              "outputPath": "dist/primeng2",
+              "outputPath": "dist/primeng",
               "index": "src/index.html",
               "main": "src/main.ts",
               "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
           "serve": {
             "builder": "@angular-devkit/build-angular:dev-server",
             "options": {
-              "browserTarget": "primeng2:build"
+              "browserTarget": "primeng:build"
             },
             "configurations": {
               "production": {
-                "browserTarget": "primeng2:build:production"
+                "browserTarget": "primeng:build:production"
               }
             }
           },
           "extract-i18n": {
             "builder": "@angular-devkit/build-angular:extract-i18n",
             "options": {
-              "browserTarget": "primeng2:build"
+              "browserTarget": "primeng:build"
             }
           },
           "test": {
@@ -109,7 +109,7 @@
           }
         }
       },
-      "primeng2-e2e": {
+      "primeng-e2e": {
         "root": "e2e/",
         "projectType": "application",
         "architect": {
@@ -117,11 +117,11 @@
             "builder": "@angular-devkit/build-angular:protractor",
             "options": {
               "protractorConfig": "e2e/protractor.conf.js",
-              "devServerTarget": "primeng2:serve"
+              "devServerTarget": "primeng:serve"
             },
             "configurations": {
                 "production": {
-                  "devServerTarget": "primeng2:serve:production"
+                  "devServerTarget": "primeng:serve:production"
                 }
               }
           },
@@ -137,5 +137,5 @@
         }
       }
     },
-    "defaultProject": "primeng2"
+    "defaultProject": "primeng"
   }
