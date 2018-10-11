@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-      "customprimeng": {
+      "primeng": {
         "root": "",
         "sourceRoot": "src",
         "projectType": "application",
@@ -109,7 +109,7 @@
           }
         }
       },
-      "customprimeng-e2e": {
+      "primeng-e2e": {
         "root": "e2e/",
         "projectType": "application",
         "architect": {
@@ -137,5 +137,5 @@
         }
       }
     },
-    "defaultProject": "customprimeng"
+    "defaultProject": "primeng"
   }
