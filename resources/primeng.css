@@ -1929,35 +1929,6 @@ input[type=text]::-ms-clear {
     width: 100%;
 }
 
-.ui-fieldset, 
-.ui-fieldset .ui-fieldset-legend {
-    padding: 0.5em 1em;
-}
-
-.ui-fieldset-toggleable .ui-fieldset-legend {
-    padding: 0;
-}
-
-.ui-fieldset-toggleable .ui-fieldset-legend a {
-    padding: 0.5em 1em;
-    cursor:pointer;
-    white-space: nowrap;
-    display: block;
-}
-
-.ui-fieldset .ui-fieldset-toggler {
-    margin-right: .1em;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.ui-fieldset .ui-fieldset-legend-text {
-    vertical-align: middle;
-}
-
-.ui-fieldset .ui-fieldset-content-wrapper-overflown {
-    overflow: hidden;
-} 
 /*
  * FileUpload
  */
@@ -2154,6 +2125,35 @@ input[type=text]::-ms-clear {
     padding: 1em 1.4em;
 }
 
+.ui-fieldset, 
+.ui-fieldset .ui-fieldset-legend {
+    padding: 0.5em 1em;
+}
+
+.ui-fieldset-toggleable .ui-fieldset-legend {
+    padding: 0;
+}
+
+.ui-fieldset-toggleable .ui-fieldset-legend a {
+    padding: 0.5em 1em;
+    cursor:pointer;
+    white-space: nowrap;
+    display: block;
+}
+
+.ui-fieldset .ui-fieldset-toggler {
+    margin-right: .1em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ui-fieldset .ui-fieldset-legend-text {
+    vertical-align: middle;
+}
+
+.ui-fieldset .ui-fieldset-content-wrapper-overflown {
+    overflow: hidden;
+} 
 /* Deprecated Grid CSS */
 .ui-grid {
     clear: both;
@@ -3729,54 +3729,6 @@ input[type=text]::-ms-clear {
 }
 
 
-.ui-organizationchart .ui-organizationchart-table {
-    border-spacing: 0;
-    border-collapse: separate;
-    margin: 0 auto;
-}
-
-.ui-organizationchart .ui-organizationchart-table > tr > td {
-    text-align: center;
-    vertical-align: top;
-    padding: 0;
-    padding: 0 .75em;
-}
-
-.ui-organizationchart .ui-organizationchart-node-content {
-    padding: .5em .75em;
-    display: inline-block;
-    position: relative;
-}
-
-.ui-organizationchart .ui-organizationchart-node-content .ui-node-toggler {
-    position: absolute;
-    bottom: -9px;
-    margin-left: -8px;
-    z-index: 2;
-    left: 50%;
-}
-
-.ui-organizationchart .ui-organizationchart-line-down {
-    margin: 0 auto;
-    height: 20px;
-    width: 1px;
-    float: none;
-}
-
-.ui-organizationchart .ui-organizationchart-line-right {
-    float: none;
-    border-radius: 0px;
-}
-
-.ui-organizationchart .ui-organizationchart-line-left {
-    float: none;
-    border-radius: 0;
-}
-
-.ui-organizationchart .ui-organizationchart-node-content.ui-organizationchart-selectable-node {
-    cursor: pointer;
-}
-
 .ui-orderlist {
     display: table;
 }
@@ -3895,6 +3847,80 @@ input[type=text]::-ms-clear {
         width: 100%;
     }
 }
+.ui-organizationchart .ui-organizationchart-table {
+    border-spacing: 0;
+    border-collapse: separate;
+    margin: 0 auto;
+}
+
+.ui-organizationchart .ui-organizationchart-table > tr > td {
+    text-align: center;
+    vertical-align: top;
+    padding: 0;
+    padding: 0 .75em;
+}
+
+.ui-organizationchart .ui-organizationchart-node-content {
+    padding: .5em .75em;
+    display: inline-block;
+    position: relative;
+}
+
+.ui-organizationchart .ui-organizationchart-node-content .ui-node-toggler {
+    position: absolute;
+    bottom: -9px;
+    margin-left: -8px;
+    z-index: 2;
+    left: 50%;
+}
+
+.ui-organizationchart .ui-organizationchart-line-down {
+    margin: 0 auto;
+    height: 20px;
+    width: 1px;
+    float: none;
+}
+
+.ui-organizationchart .ui-organizationchart-line-right {
+    float: none;
+    border-radius: 0px;
+}
+
+.ui-organizationchart .ui-organizationchart-line-left {
+    float: none;
+    border-radius: 0;
+}
+
+.ui-organizationchart .ui-organizationchart-node-content.ui-organizationchart-selectable-node {
+    cursor: pointer;
+}
+
+.ui-overlaypanel {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+}
+
+.ui-overlaypanel-content {
+    padding: 0.5em 1em;
+}
+
+.ui-overlaypanel-close {
+    position: absolute;
+    top: -1em;
+    right: -1em;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.ui-overlaypanel-close-icon {
+    line-height: inherit;
+}
 .ui-paginator {
     margin: 0;
     text-align: center;
@@ -3988,32 +4014,6 @@ input[type=text]::-ms-clear {
 
 .ui-fluid .ui-paginator .ui-dropdown {
     width: auto;
-}
-.ui-overlaypanel {
-    padding: 0;
-    margin: 0;
-    position: absolute;
-}
-
-.ui-overlaypanel-content {
-    padding: 0.5em 1em;
-}
-
-.ui-overlaypanel-close {
-    position: absolute;
-    top: -1em;
-    right: -1em;
-    width: 2em;
-    height: 2em;
-    line-height: 2em;
-    text-align: center;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border-radius: 100%;
-}
-
-.ui-overlaypanel-close-icon {
-    line-height: inherit;
 }
 .ui-panel {
 	padding: 0.2em;
