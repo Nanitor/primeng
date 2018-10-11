@@ -88,7 +88,7 @@ export class TableService {
 
             <div class="ui-table-scrollable-wrapper" *ngIf="scrollable">
                <div class="ui-table-scrollable-view ui-table-frozen-view" *ngIf="frozenColumns||frozenBodyTemplate" [pScrollableView]="frozenColumns" [frozen]="true" [ngStyle]="{width: frozenWidth}" [scrollHeight]="scrollHeight"></div>
-               <div class="ui-table-scrollable-view" [pScrollableView]="columns" [frozen]="false" [scrollHeight]="scrollHeight" [ngStyle]="{left: frozenWidth, width: 'calc(100% - '+frozenWidth+')'}"></div>
+               <div #scrollableView class="ui-table-scrollable-view" [pScrollableView]="columns" [frozen]="false" [scrollHeight]="scrollHeight" [ngStyle]="{left: frozenWidth, width: 'calc(100% - '+frozenWidth+')'}"></div>
             </div>
             
             <p-paginator [rows]="rows" [first]="first" [totalRecords]="totalRecords" [pageLinkSize]="pageLinks" styleClass="ui-paginator-bottom" [alwaysShow]="alwaysShowPaginator"
@@ -277,6 +277,8 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
     @ViewChild('reorderIndicatorDown', { static: false }) reorderIndicatorDownViewChild: ElementRef;
 
     @ViewChild('table', { static: false }) tableViewChild: ElementRef;
+
+    @ViewChild('scrollableView') scrollableView: ScrollableView;
 
     @ContentChildren(PrimeTemplate) templates: QueryList<PrimeTemplate>;
 
@@ -1464,6 +1466,15 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
         delete this.editingRowKeys[dataKeyValue];
     }
 
+    public getScrollPosition() {
+        return this.scrollableView.getScrollPosition();
+    }
+
+    public setScrollPosition(scrollPosition: number) {
+        let scrollableViewComponent: ScrollableView = this.scrollableView as ScrollableView;
+        scrollableViewComponent.setScrollPosition(scrollPosition);
+    }
+
     toggleRow(rowData: any, event?: Event) {
         if(!this.dataKey) {
             throw new Error('dataKey must be defined to use row expansion');
@@ -2377,6 +2388,30 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
                 });
             }
         }
+    }
+
+    getScrollPosition() {
+        return this.scrollBodyViewChild.nativeElement.scrollTop;
+    }
+
+    setScrollPosition(scrollposition: number) {
+        let pageHeight = this.dt.virtualRowHeight * this.dt.rows;
+        let virtualTableHeight = this.domHandler.getOuterHeight(this.virtualScrollerViewChild.nativeElement);
+        let pageCount = (virtualTableHeight / pageHeight)||1;
+
+        this.scrollBodyViewChild.nativeElement.style.top = scrollposition + 'px';
+
+        let page = Math.floor((this.scrollBodyViewChild.nativeElement.scrollTop * pageCount) / (this.scrollBodyViewChild.nativeElement.scrollHeight)) + 1;
+        this.dt.handleVirtualScroll({
+            page: page,
+            callback: () => {
+                this.scrollTableViewChild.nativeElement.style.top = ((page - 1) * pageHeight) + 'px';
+
+                if (this.frozenSiblingBody) {
+                    (<HTMLElement> this.frozenSiblingBody.children[0]).style.top = this.scrollTableViewChild.nativeElement.style.top;
+                }
+            }
+        });
     }
 
     setScrollHeight() {
