@@ -111,7 +111,6 @@ export declare class Table implements OnInit, AfterContentInit, BlockableUI {
     reorderIndicatorUpViewChild: ElementRef;
     reorderIndicatorDownViewChild: ElementRef;
     tableViewChild: ElementRef;
-    scrollableView: ScrollableView;
     templates: QueryList<PrimeTemplate>;
     _value: any[];
     _columns: any[];
@@ -204,8 +203,6 @@ export declare class Table implements OnInit, AfterContentInit, BlockableUI {
     reset(): void;
     exportCSV(options?: any): void;
     closeCellEdit(): void;
-    getScrollPosition(): any;
-    setScrollPosition(scrollPosition: number): void;
     toggleRow(rowData: any, event?: Event): void;
     isRowExpanded(rowData: any): boolean;
     isSingleSelectionMode(): boolean;
@@ -268,8 +265,6 @@ export declare class ScrollableView implements AfterViewInit, OnDestroy, AfterVi
     onHeaderScroll(event: any): void;
     onFooterScroll(event: any): void;
     onBodyScroll(event: any): void;
-    getScrollPosition(): any;
-    setScrollPosition(scrollposition: number): void;
     setScrollHeight(): void;
     setVirtualScrollerHeight(): void;
     hasVerticalOverflow(): boolean;
