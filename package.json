@@ -1,6 +1,6 @@
 {
     "name": "primeng",
-    "version": "6.1.5-SNAPSHOT",
+    "version": "1.0.4",
     "license": "MIT",
     "scripts": {
         "ng": "ng",
@@ -8,7 +8,12 @@
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "build-components": "ngc -p tsconfig-release.json",
+        "build-assets": "gulp build-assets",
+        "build-exports": "gulp build-exports",
+        "build-styles": "node-sass src/assets/components -o src/assets/components",
+        "build-redistribute": "npm run build-components && npm run build-assets && npm run build-styles"
     },
     "repository": {
         "type": "git",
@@ -53,6 +58,7 @@
         "karma-jasmine": "~1.1.1",
         "karma-jasmine-html-reporter": "^0.2.2",
         "moment": "2.19.3",
+        "node-sass": "^4.5.3",
         "primeflex": "1.0.0-rc.1",
         "primeicons": "1.0.0-beta.10",
         "prismjs": "1.6.0",
