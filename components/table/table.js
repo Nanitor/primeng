@@ -1478,15 +1478,13 @@ var ScrollableView = /** @class */ (function () {
                 }, 50);
             });
         });
-        if (this.dt.virtualScroll) {
-            this.totalRecordsSubscription = this.dt.tableService.totalRecordsSource$.subscribe(function () {
-                _this.zone.runOutsideAngular(function () {
-                    setTimeout(function () {
-                        _this.setVirtualScrollerHeight();
-                    }, 50);
-                });
+        this.totalRecordsSubscription = this.dt.tableService.totalRecordsSource$.subscribe(function () {
+            _this.zone.runOutsideAngular(function () {
+                setTimeout(function () {
+                    _this.setVirtualScrollerHeight();
+                }, 50);
             });
-        }
+        });
         if (this.frozen) {
             this.columnsSubscription = this.dt.tableService.columnsSource$.subscribe(function () {
                 _this.zone.runOutsideAngular(function () {
@@ -1650,7 +1648,6 @@ var ScrollableView = /** @class */ (function () {
                     this.scrollBodyViewChild.nativeElement.style.maxHeight = (parseInt(this.scrollHeight) - this.domHandler.calculateScrollbarWidth()) + 'px';
                 else
                     this.scrollBodyViewChild.nativeElement.style.maxHeight = this.scrollHeight;
-                this.scrollBodyViewChild.nativeElement.style.height = this.scrollHeight;
             }
         }
     };
