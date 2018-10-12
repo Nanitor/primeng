@@ -1617,7 +1617,7 @@ var ScrollableView = /** @class */ (function () {
         var pageHeight = this.dt.virtualRowHeight * this.dt.rows;
         var virtualTableHeight = this.domHandler.getOuterHeight(this.virtualScrollerViewChild.nativeElement);
         var pageCount = (virtualTableHeight / pageHeight) || 1;
-        this.scrollBodyViewChild.nativeElement.style.scrollTop = scrollposition + 'px';
+        this.scrollBodyViewChild.nativeElement.style.scrollTop = scrollposition;
         var page = Math.floor((this.scrollBodyViewChild.nativeElement.scrollTop * pageCount) / (this.scrollBodyViewChild.nativeElement.scrollHeight)) + 1;
         this.dt.handleVirtualScroll({
             page: page,
