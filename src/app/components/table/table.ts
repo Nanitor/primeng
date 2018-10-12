@@ -2399,7 +2399,7 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
         let virtualTableHeight = this.domHandler.getOuterHeight(this.virtualScrollerViewChild.nativeElement);
         let pageCount = (virtualTableHeight / pageHeight)||1;
 
-        this.scrollBodyViewChild.nativeElement.style.scrollTop = scrollposition;
+        this.scrollBodyViewChild.nativeElement.scrollTop = scrollposition;
 
         let page = Math.floor((this.scrollBodyViewChild.nativeElement.scrollTop * pageCount) / (this.scrollBodyViewChild.nativeElement.scrollHeight)) + 1;
         this.dt.handleVirtualScroll({
