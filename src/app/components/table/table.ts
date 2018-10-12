@@ -280,8 +280,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
 
     @ViewChild('scrollableView') scrollableView: ScrollableView;
 
-    @ViewChild('scrollableView') scrollableView: ScrollableView;
-
     @ContentChildren(PrimeTemplate) templates: QueryList<PrimeTemplate>;
 
     _value: any[] = [];
