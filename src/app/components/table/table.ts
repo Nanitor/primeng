@@ -2207,15 +2207,13 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
             });
         });
 
-        if (this.dt.virtualScroll) {
-            this.totalRecordsSubscription = this.dt.tableService.totalRecordsSource$.subscribe(() => {
-                this.zone.runOutsideAngular(() => {
-                    setTimeout(() => {
-                        this.setVirtualScrollerHeight();
-                    }, 50);
-                });
+        this.totalRecordsSubscription = this.dt.tableService.totalRecordsSource$.subscribe(() => {
+            this.zone.runOutsideAngular(() => {
+                setTimeout(() => {
+                    this.setVirtualScrollerHeight();
+                }, 50);
             });
-        }
+        });
 
         this.loadingArray = Array(this.dt.rows).fill(1);
         
@@ -2447,7 +2445,6 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
                     this.scrollBodyViewChild.nativeElement.style.maxHeight = (parseInt(this.scrollHeight) - DomHandler.calculateScrollbarWidth()) + 'px';
                 else
                     this.scrollBodyViewChild.nativeElement.style.maxHeight = this.scrollHeight;
-                    this.scrollBodyViewChild.nativeElement.style.height = this.scrollHeight;
             }
         }
     }
