@@ -1330,8 +1330,8 @@ export class Table implements OnInit, AfterContentInit, BlockableUI {
         let data = this.filteredValue || this.value;
         let csv = '\ufeff';
 
-        if (options && options.selectionOnly) {
-            data = this.selection || [];
+        if (options &&  options.selectionOnly) {
+            data = options.selection || this.selection || [];
         }
         
         //headers

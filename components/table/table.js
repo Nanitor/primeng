@@ -987,7 +987,7 @@ var Table = /** @class */ (function () {
         var data = this.filteredValue || this.value;
         var csv = '\ufeff';
         if (options && options.selectionOnly) {
-            data = this.selection || [];
+            data = options.selection || this.selection || [];
         }
         //headers
         for (var i = 0; i < this.columns.length; i++) {
