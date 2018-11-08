@@ -278,6 +278,8 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
 
     @ViewChild('table', { static: false }) tableViewChild: ElementRef;
 
+    @ViewChild('table') tableViewChild: ElementRef;
+
     @ViewChild('scrollableView') scrollableView: ScrollableView;
 
     @ContentChildren(PrimeTemplate) templates: QueryList<PrimeTemplate>;
@@ -1599,6 +1601,12 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
                         this.containerViewChild.nativeElement.style.width = containerWidth + 'px';
                     }
                 }
+                else {
+                    this.tableViewChild.nativeElement.style.width = this.tableViewChild.nativeElement.offsetWidth + delta + 'px';
+                    column.style.width = newColumnWidth + 'px';
+                    let containerWidth = this.tableViewChild.nativeElement.style.width;
+                    this.containerViewChild.nativeElement.style.width = containerWidth + 'px';
+                }
             }
 
             this.onColResize.emit({
@@ -2209,13 +2217,15 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
             });
         });
 
-        this.totalRecordsSubscription = this.dt.tableService.totalRecordsSource$.subscribe(() => {
-            this.zone.runOutsideAngular(() => {
-                setTimeout(() => {
-                    this.setVirtualScrollerHeight();
-                }, 50);
+        if (this.dt.virtualScroll) {
+            this.totalRecordsSubscription = this.dt.tableService.totalRecordsSource$.subscribe(() => {
+                this.zone.runOutsideAngular(() => {
+                    setTimeout(() => {
+                        this.setVirtualScrollerHeight();
+                    }, 50);
+                });
             });
-        });
+        }
 
         this.loadingArray = Array(this.dt.rows).fill(1);
         
@@ -2412,7 +2422,7 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
                 }
             }
         });
-    }
+    } 
 
     setScrollHeight() {
         if(this.scrollHeight && this.scrollBodyViewChild && this.scrollBodyViewChild.nativeElement) {

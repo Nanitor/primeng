@@ -110,6 +110,7 @@ export declare class Table implements OnInit, AfterContentInit, BlockableUI {
     resizeHelperViewChild: ElementRef;
     reorderIndicatorUpViewChild: ElementRef;
     reorderIndicatorDownViewChild: ElementRef;
+    tableViewChild: ElementRef;
     scrollableView: ScrollableView;
     templates: QueryList<PrimeTemplate>;
     _value: any[];
