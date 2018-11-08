@@ -1052,11 +1052,13 @@ var Table = /** @class */ (function () {
         this.editingCell = null;
     };
     Table.prototype.getScrollPosition = function () {
-        return this.scrollableView.getScrollPosition();
+        return this.scrollableView ? this.scrollableView.getScrollPosition() : 0;
     };
     Table.prototype.setScrollPosition = function (scrollPosition) {
         var scrollableViewComponent = this.scrollableView;
-        scrollableViewComponent.setScrollPosition(scrollPosition);
+        if (scrollableViewComponent) {
+            scrollableViewComponent.setScrollPosition(scrollPosition);
+        }
     };
     Table.prototype.toggleRow = function (rowData, event) {
         if (!this.dataKey) {
