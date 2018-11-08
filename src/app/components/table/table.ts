@@ -732,6 +732,9 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
 
     sortMultiple() {
         if(this.multiSortMeta) {
+            if(this.resetPageOnSort) {
+                this.first = 0;
+            }
             if (this.lazy) {
                 this.onLazyLoad.emit(this.createLazyLoadMetadata());
             }
