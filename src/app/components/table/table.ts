@@ -1407,12 +1407,14 @@ export class Table implements OnInit, AfterContentInit, BlockableUI {
     }
 
     public getScrollPosition() {
-        return this.scrollableView.getScrollPosition();
+        return this.scrollableView ? this.scrollableView.getScrollPosition() : 0;
     }
 
     public setScrollPosition(scrollPosition: number) {
         let scrollableViewComponent: ScrollableView = this.scrollableView as ScrollableView;
-        scrollableViewComponent.setScrollPosition(scrollPosition);
+        if (scrollableViewComponent) {
+            scrollableViewComponent.setScrollPosition(scrollPosition);
+        }
     }
 
     toggleRow(rowData: any, event?: Event) {
