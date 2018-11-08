@@ -70,6 +70,19 @@ export class TableService {
             <p-paginator [rows]="rows" [first]="first" [totalRecords]="totalRecords" [pageLinkSize]="pageLinks" styleClass="ui-paginator-top" [alwaysShow]="alwaysShowPaginator"
                 (onPageChange)="onPageChange($event)" [rowsPerPageOptions]="rowsPerPageOptions" *ngIf="paginator && (paginatorPosition === 'top' || paginatorPosition =='both')"
                 [templateLeft]="paginatorLeftTemplate" [templateRight]="paginatorRightTemplate" [dropdownAppendTo]="paginatorDropdownAppendTo"></p-paginator>
+            
+            <div class="ui-table-wrapper" *ngIf="!scrollable">
+                <table #table [ngClass]="tableStyleClass" [ngStyle]="tableStyle">
+                    <ng-container *ngTemplateOutlet="colGroupTemplate; context {$implicit: columns}"></ng-container>
+                    <thead class="ui-table-thead">
+                        <ng-container *ngTemplateOutlet="headerTemplate; context: {$implicit: columns}"></ng-container>
+                    </thead>
+                    <tfoot class="ui-table-tfoot">
+                        <ng-container *ngTemplateOutlet="footerTemplate; context {$implicit: columns}"></ng-container>
+                    </tfoot>
+                    <tbody class="ui-table-tbody" [pTableBody]="columns" [pTableBodyTemplate]="bodyTemplate"></tbody>
+                </table>
+            </div>
 
             <div class="ui-table-scrollable-wrapper" *ngIf="scrollable">
                <div class="ui-table-scrollable-view ui-table-frozen-view" *ngIf="frozenColumns||frozenBodyTemplate" [pScrollableView]="frozenColumns" [frozen]="true" [ngStyle]="{width: frozenWidth}" [scrollHeight]="scrollHeight"></div>
@@ -238,6 +251,8 @@ export class Table implements OnInit, AfterContentInit, BlockableUI {
     @ViewChild('reorderIndicatorUp') reorderIndicatorUpViewChild: ElementRef;
 
     @ViewChild('reorderIndicatorDown') reorderIndicatorDownViewChild: ElementRef;
+
+    @ViewChild('table') tableViewChild: ElementRef;
 
     @ViewChild('scrollableView') scrollableView: ScrollableView;
 
@@ -1536,6 +1551,12 @@ export class Table implements OnInit, AfterContentInit, BlockableUI {
                     this.resizeColGroup(scrollableBodyTable, resizeColumnIndex, newColumnWidth, null);
                     this.resizeColGroup(scrollableFooterTable, resizeColumnIndex, newColumnWidth, null);
                 }
+                else {
+                    this.tableViewChild.nativeElement.style.width = this.tableViewChild.nativeElement.offsetWidth + delta + 'px';
+                    column.style.width = newColumnWidth + 'px';
+                    let containerWidth = this.tableViewChild.nativeElement.style.width;
+                    this.containerViewChild.nativeElement.style.width = containerWidth + 'px';
+                }
             }
 
             this.onColResize.emit({
@@ -1869,13 +1890,15 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
             });
         });
 
-        this.totalRecordsSubscription = this.dt.tableService.totalRecordsSource$.subscribe(() => {
-            this.zone.runOutsideAngular(() => {
-                setTimeout(() => {
-                    this.setVirtualScrollerHeight();
-                }, 50);
+        if (this.dt.virtualScroll) {
+            this.totalRecordsSubscription = this.dt.tableService.totalRecordsSource$.subscribe(() => {
+                this.zone.runOutsideAngular(() => {
+                    setTimeout(() => {
+                        this.setVirtualScrollerHeight();
+                    }, 50);
+                });
             });
-        });
+        }
 
         if (this.frozen) {
             this.columnsSubscription = this.dt.tableService.columnsSource$.subscribe(() => {
@@ -2039,7 +2062,7 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
                 }
             }
         });
-    }
+    } 
 
     setScrollHeight() {
         if(this.scrollHeight && this.scrollBodyViewChild && this.scrollBodyViewChild.nativeElement) {
