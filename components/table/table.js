@@ -1330,7 +1330,9 @@ var Table = /** @class */ (function () {
     };
     Table.prototype.handleVirtualScroll = function (event) {
         var _this = this;
-        this.first = (event.page - 1) * this.rows;
+        if (!this.paginator) {
+            this.first = (event.page - 1) * this.rows;
+        }
         this.virtualScrollCallback = event.callback;
         this.zone.run(function () {
             if (_this.virtualScrollTimer) {

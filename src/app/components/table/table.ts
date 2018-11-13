@@ -1747,8 +1747,10 @@ export class Table implements OnInit, AfterContentInit, BlockableUI {
         this.onRowDragEnd(event);
     }
 
-    handleVirtualScroll(event) {
-        this.first = (event.page - 1) * this.rows;
+     handleVirtualScroll(event) {
+        if (!this.paginator) {
+            this.first = (event.page - 1) * this.rows;
+        }
         this.virtualScrollCallback = event.callback;
         
         this.zone.run(() => {
