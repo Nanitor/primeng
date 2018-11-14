@@ -84,7 +84,7 @@ export class TableService {
                 </table>
             </div>
 
-            <div class="ui-table-scrollable-wrapper">
+            <div class="ui-table-scrollable-wrapper" *ngIf="scrollable">
                <div class="ui-table-scrollable-view ui-table-frozen-view" *ngIf="frozenColumns||frozenBodyTemplate" [pScrollableView]="frozenColumns" [frozen]="true" [ngStyle]="{width: frozenWidth}" [scrollHeight]="scrollHeight"></div>
                <div #scrollableView class="ui-table-scrollable-view" [pScrollableView]="columns" [frozen]="false" [scrollHeight]="scrollHeight"></div>
             </div>
@@ -626,6 +626,9 @@ export class Table implements OnInit, AfterContentInit, BlockableUI {
 
     sortMultiple() {
         if(this.multiSortMeta) {
+            if(this.resetPageOnSort) {
+                this.first = 0;
+            }
             if (this.lazy) {
                 this.onLazyLoad.emit(this.createLazyLoadMetadata());
             }
@@ -1345,8 +1348,8 @@ export class Table implements OnInit, AfterContentInit, BlockableUI {
         let data = this.filteredValue || this.value;
         let csv = '\ufeff';
 
-        if (options && options.selectionOnly) {
-            data = this.selection || [];
+        if (options &&  options.selectionOnly) {
+            data = options.selection || this.selection || [];
         }
         
         //headers
@@ -1422,12 +1425,14 @@ export class Table implements OnInit, AfterContentInit, BlockableUI {
     }
 
     public getScrollPosition() {
-        return this.scrollableView.getScrollPosition();
+        return this.scrollableView ? this.scrollableView.getScrollPosition() : 0;
     }
 
     public setScrollPosition(scrollPosition: number) {
         let scrollableViewComponent: ScrollableView = this.scrollableView as ScrollableView;
-        scrollableViewComponent.setScrollPosition(scrollPosition);
+        if (scrollableViewComponent) {
+            scrollableViewComponent.setScrollPosition(scrollPosition);
+        }
     }
 
     toggleRow(rowData: any, event?: Event) {
@@ -1742,8 +1747,10 @@ export class Table implements OnInit, AfterContentInit, BlockableUI {
         this.onRowDragEnd(event);
     }
 
-    handleVirtualScroll(event) {
-        this.first = (event.page - 1) * this.rows;
+     handleVirtualScroll(event) {
+        if (!this.paginator) {
+            this.first = (event.page - 1) * this.rows;
+        }
         this.virtualScrollCallback = event.callback;
         
         this.zone.run(() => {
@@ -1825,7 +1832,7 @@ export class TableBody {
                 <ng-container *ngTemplateOutlet="frozen ? dt.frozenColGroupTemplate||dt.colGroupTemplate : dt.colGroupTemplate; context {$implicit: columns}"></ng-container>
                 <tbody class="ui-table-tbody" [pTableBody]="columns" [pTableBodyTemplate]="frozen ? dt.frozenBodyTemplate||dt.bodyTemplate : dt.bodyTemplate"></tbody>
             </table>
-            <div #virtualScroller class="ui-table-virtual-scroller"></div>
+            <div #virtualScroller class="ui-table-virtual-scroller" tabIndex="100"></div>
         </div>
         <div #scrollFooter *ngIf="dt.footerTemplate" class="ui-table-scrollable-footer ui-widget-header">
             <div #scrollFooterBox class="ui-table-scrollable-footer-box">
@@ -2047,7 +2054,7 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
         let virtualTableHeight = this.domHandler.getOuterHeight(this.virtualScrollerViewChild.nativeElement);
         let pageCount = (virtualTableHeight / pageHeight)||1;
 
-        this.scrollBodyViewChild.nativeElement.style.top = scrollposition + 'px';
+        this.scrollBodyViewChild.nativeElement.scrollTop = scrollposition;
 
         let page = Math.floor((this.scrollBodyViewChild.nativeElement.scrollTop * pageCount) / (this.scrollBodyViewChild.nativeElement.scrollHeight)) + 1;
         this.dt.handleVirtualScroll({
