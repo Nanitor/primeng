@@ -280,7 +280,7 @@ describe('Slider', () => {
     it('should select range', () => {
         slider.range = true;
         slider.handleValues = [20,80];
-        slider.values = [20,80];
+        slider.values = 20;
         fixture.detectChanges();
 
         const sliderHandlers = fixture.debugElement.queryAll(By.css(".ui-slider-handle"));
@@ -303,7 +303,7 @@ describe('Slider', () => {
         slider.range = true;
         slider.step = 2;
         slider.handleValues = [20,80];
-        slider.values = [20,80];
+        slider.values = 20;
         fixture.detectChanges();
 
         const sliderHandlers = fixture.debugElement.queryAll(By.css(".ui-slider-handle"));
@@ -326,7 +326,7 @@ describe('Slider', () => {
     it('should select range with min and max options', () => {
         slider.range = true;
         slider.handleValues = [20,80];
-        slider.values = [20,80];
+        slider.values = 20;
         slider.min = 19;
         slider.max = 81;
         fixture.detectChanges();
