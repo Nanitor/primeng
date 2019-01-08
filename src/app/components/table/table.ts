@@ -1867,6 +1867,12 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
         });
     }
 
+    public setFocusToList() {
+        if (this.scrollableView) {
+            this.scrollableView.setFocusToList();
+        }
+    }
+
     isEmpty() {
         let data = this.filteredValue||this.value;
         return data == null || data.length == 0;
@@ -2407,6 +2413,12 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
             }
         }
         this.initialized = false;
+    }
+
+    setFocusToList() {
+        if (this.virtualScrollerViewChild) {
+            this.virtualScrollerViewChild.nativeElement.focus();
+        }
     }
 
     ngOnDestroy() {
