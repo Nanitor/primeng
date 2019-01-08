@@ -1764,7 +1764,7 @@ export class Table implements OnInit, AfterContentInit, BlockableUI {
         });
     }
 
-    setFocusToList() {
+    public setFocusToList() {
         if (this.scrollableView) {
             this.scrollableView.setFocusToList();
         }
