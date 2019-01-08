@@ -237,6 +237,7 @@ export declare class Table implements OnInit, AfterViewInit, AfterContentInit, B
     onRowDragEnd(event: any): void;
     onRowDrop(event: any, rowElement: any): void;
     handleVirtualScroll(event: any): void;
+    setFocusToList(): void;
     isEmpty(): boolean;
     getBlockableElement(): HTMLElement;
     getStorage(): Storage;
@@ -295,6 +296,7 @@ export declare class ScrollableView implements AfterViewInit, OnDestroy, AfterVi
     setVirtualScrollerHeight(): void;
     hasVerticalOverflow(): boolean;
     alignScrollBar(): void;
+    setFocusToList(): void;
     ngOnDestroy(): void;
 }
 export declare class SortableColumn implements OnInit, OnDestroy {

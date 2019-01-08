@@ -1422,6 +1422,11 @@ var Table = /** @class */ (function () {
             }, _this.virtualScrollDelay);
         });
     };
+    Table.prototype.setFocusToList = function () {
+        if (this.scrollableView) {
+            this.scrollableView.setFocusToList();
+        }
+    };
     Table.prototype.isEmpty = function () {
         var data = this.filteredValue || this.value;
         return data == null || data.length == 0;
@@ -2175,6 +2180,11 @@ var ScrollableView = /** @class */ (function () {
             }
         }
         this.initialized = false;
+    };
+    ScrollableView.prototype.setFocusToList = function () {
+        if (this.virtualScrollerViewChild) {
+            this.virtualScrollerViewChild.nativeElement.focus();
+        }
     };
     ScrollableView.prototype.ngOnDestroy = function () {
         this.unbindEvents();
