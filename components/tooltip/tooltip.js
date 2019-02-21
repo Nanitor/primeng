@@ -12,16 +12,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
+var router_1 = require("@angular/router");
 var Tooltip = /** @class */ (function () {
-    function Tooltip(el, domHandler, zone) {
+    function Tooltip(el, domHandler, zone, router) {
+        var _this = this;
         this.el = el;
         this.domHandler = domHandler;
         this.zone = zone;
+        this.router = router;
         this.tooltipPosition = 'right';
         this.tooltipEvent = 'hover';
         this.appendTo = 'body';
         this.tooltipZIndex = 'auto';
         this.escape = true;
+        router.events.subscribe(function (val) {
+            if (val instanceof router_1.NavigationStart) {
+                _this.deactivate();
+            }
+        });
     }
     Tooltip.prototype.ngAfterViewInit = function () {
         var _this = this;
@@ -364,7 +372,7 @@ var Tooltip = /** @class */ (function () {
             selector: '[pTooltip]',
             providers: [domhandler_1.DomHandler]
         }),
-        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.NgZone])
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.NgZone, router_1.Router])
     ], Tooltip);
     return Tooltip;
 }());
