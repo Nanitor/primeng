@@ -1,9 +1,11 @@
 import { ElementRef, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import { DomHandler } from '../dom/domhandler';
+import { Router } from '@angular/router';
 export declare class Tooltip implements AfterViewInit, OnDestroy {
     el: ElementRef;
     domHandler: DomHandler;
     zone: NgZone;
+    private router;
     tooltipPosition: string;
     tooltipEvent: string;
     appendTo: any;
@@ -28,7 +30,7 @@ export declare class Tooltip implements AfterViewInit, OnDestroy {
     focusListener: Function;
     blurListener: Function;
     resizeListener: any;
-    constructor(el: ElementRef, domHandler: DomHandler, zone: NgZone);
+    constructor(el: ElementRef, domHandler: DomHandler, zone: NgZone, router: Router);
     ngAfterViewInit(): void;
     onMouseEnter(e: Event): void;
     onMouseLeave(e: Event): void;
