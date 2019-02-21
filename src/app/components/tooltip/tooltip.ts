@@ -1,6 +1,7 @@
 import { NgModule, Directive, ElementRef, AfterViewInit, OnDestroy, HostBinding, HostListener, Input, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomHandler } from '../dom/domhandler';
+import { Router, NavigationStart } from '@angular/router';
 
 @Directive({
     selector: '[pTooltip]'
@@ -55,7 +56,13 @@ export class Tooltip implements AfterViewInit, OnDestroy {
 
     resizeListener: any;
 
-    constructor(public el: ElementRef, public zone: NgZone) { }
+    constructor(public el: ElementRef, public domHandler: DomHandler, public zone: NgZone, private router: Router) {
+        router.events.subscribe((val) => {
+            if (val instanceof NavigationStart) {
+                this.deactivate();
+            }
+        });
+    }
 
     ngAfterViewInit() {
         this.zone.runOutsideAngular(() => {
