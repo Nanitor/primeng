@@ -1,10 +1,9 @@
-import { OnInit, AfterViewInit, AfterViewChecked, AfterContentInit, EventEmitter, ElementRef, TemplateRef, QueryList, NgZone } from '@angular/core';
+import { OnInit, AfterViewInit, AfterViewChecked, AfterContentInit, EventEmitter, ElementRef, TemplateRef, QueryList, NgZone, OnDestroy } from '@angular/core';
 import { Column, PrimeTemplate } from '../common/shared';
 import { DomHandler } from '../dom/domhandler';
 import { ObjectUtils } from '../utils/objectutils';
 import { SortMeta } from '../common/sortmeta';
 import { FilterMetadata } from '../common/filtermetadata';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { BlockableUI } from '../common/blockableui';
 import { Subscription, Observable } from 'rxjs';
 export declare class TableService {
