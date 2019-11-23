@@ -2425,7 +2425,7 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
                 }
             }
         });
-    } 
+    }
 
     setScrollHeight() {
         if(this.scrollHeight && this.scrollBodyViewChild && this.scrollBodyViewChild.nativeElement) {
