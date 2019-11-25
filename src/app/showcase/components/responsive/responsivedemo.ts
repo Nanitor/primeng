@@ -3,11 +3,15 @@ import {Car} from '../../components/domain/car';
 import {CarService} from '../../service/carservice';
 import {NodeService} from '../../service/nodeservice';
 import {CountryService} from '../../service/countryservice';
-import {SelectItem,MenuItem,TreeNode} from 'primeng/api';
+import {SelectItem,MenuItem,TreeNode} from '../../../components/common/api';
 
 @Component({
     templateUrl: './responsivedemo.html',
     styles: [`
+        .ui-datagrid .ui-datagrid-column {
+            text-align: center;
+        }
+        
         .radiobuttons > * {
             vertical-align: middle;
         }

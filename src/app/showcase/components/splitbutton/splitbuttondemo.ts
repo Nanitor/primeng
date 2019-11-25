@@ -1,6 +1,6 @@
 import {Component,OnInit} from '@angular/core';
-import {MessageService} from 'primeng/api';
-import {MenuItem} from 'primeng/api';
+import {MessageService} from '../../../components/common/messageservice';
+import {MenuItem} from '../../../components/common/api';
 
 @Component({
     templateUrl: './splitbuttondemo.html',
@@ -26,7 +26,6 @@ export class SplitButtonDemo implements OnInit {
                 this.delete();
             }},
             {label: 'Angular.io', icon: 'pi pi-info', url: 'http://angular.io'},
-            {separator:true},
             {label: 'Setup', icon: 'pi pi-cog', routerLink: ['/setup']}
         ];
     }

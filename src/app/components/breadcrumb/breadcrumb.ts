@@ -1,6 +1,7 @@
 import {NgModule,Component,Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MenuItem} from 'primeng/api';
+import {MenuItem} from '../common/menuitem';
+import {Location} from '@angular/common';
 import {RouterModule} from '@angular/router';
 
 @Component({

@@ -1,6 +1,6 @@
 import {NgModule,Component,Input,AfterViewInit,OnDestroy,ElementRef,ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DomHandler} from 'primeng/dom';
+import {DomHandler} from '../dom/domhandler';
 
 @Component({
     selector: 'p-blockUI',
@@ -18,7 +18,7 @@ export class BlockUI implements AfterViewInit,OnDestroy {
     
     @Input() baseZIndex: number = 0;
     
-    @ViewChild('mask', { static: true }) mask: ElementRef;
+    @ViewChild('mask', { static: false }) mask: ElementRef;
     
     _blocked: boolean;
         

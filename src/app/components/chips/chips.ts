@@ -1,7 +1,8 @@
-import {NgModule,Component,ElementRef,Input,Output,EventEmitter,AfterContentInit,ContentChildren,QueryList,TemplateRef,forwardRef,ViewChild} from '@angular/core';
+import {NgModule,Component,ElementRef,Input,Output,EventEmitter,AfterContentInit,ContentChildren,QueryList,TemplateRef,IterableDiffers,forwardRef,ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SharedModule,PrimeTemplate} from 'primeng/api';
-import {InputTextModule} from 'primeng/inputtext';
+import {SharedModule,PrimeTemplate} from '../common/shared';
+import {InputTextModule} from '../inputtext/inputtext';
+import {DomHandler} from '../dom/domhandler';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
 export const CHIPS_VALUE_ACCESSOR: any = {
@@ -67,7 +68,7 @@ export class Chips implements AfterContentInit,ControlValueAccessor {
 
     @Output() onChipClick: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild('inputtext', { static: true }) inputViewChild: ElementRef;
+    @ViewChild('inputtext', { static: false }) inputViewChild: ElementRef;
     
     @ContentChildren(PrimeTemplate) templates: QueryList<any>;
     

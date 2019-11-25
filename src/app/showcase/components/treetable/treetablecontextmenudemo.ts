@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { TreeNode, MenuItem } from 'primeng/api';
+import { TreeNode, MenuItem } from '../../../components/common/api';
 import { NodeService } from '../../service/nodeservice';
-import {MessageService} from 'primeng/api';
+import {MessageService} from '../../../components/common/messageservice';
 
 @Component({
     templateUrl: './treetablecontextmenudemo.html',

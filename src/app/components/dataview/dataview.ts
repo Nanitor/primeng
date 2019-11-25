@@ -1,10 +1,10 @@
-import {NgModule,Component,ElementRef,OnInit,AfterContentInit,Input,Output,EventEmitter,ContentChild,ContentChildren,QueryList,TemplateRef, OnChanges, SimpleChanges} from '@angular/core';
+import {NgModule,Component,ElementRef,OnInit,AfterContentInit,DoCheck,OnDestroy,Input,Output,SimpleChange,EventEmitter,ContentChild,ContentChildren,QueryList,TemplateRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ObjectUtils} from 'primeng/utils';
-import {Header,Footer,PrimeTemplate,SharedModule} from 'primeng/api';
-import {PaginatorModule} from 'primeng/paginator';
-import {BlockableUI} from 'primeng/api';
-import {FilterUtils} from 'primeng/utils';
+import {ObjectUtils} from '../utils/objectutils';
+import {Header,Footer,PrimeTemplate,SharedModule} from '../common/shared';
+import {PaginatorModule} from '../paginator/paginator';
+import {BlockableUI} from '../common/blockableui';
+import { FilterUtils } from '../utils/filterutils';
 
 @Component({
     selector: 'p-dataView',
@@ -39,7 +39,7 @@ import {FilterUtils} from 'primeng/utils';
         </div>
     `
 })
-export class DataView implements OnInit,AfterContentInit,BlockableUI,OnChanges {
+export class DataView implements OnInit,AfterContentInit,BlockableUI {
 
     @Input() layout: string = 'list';
 
@@ -85,19 +85,13 @@ export class DataView implements OnInit,AfterContentInit,BlockableUI,OnChanges {
 
     @Input() first: number = 0;
 
-    @Input() sortField: string;
-
-    @Input() sortOrder: number;
-
-    @Input() value: any[];
-
     @Output() onPage: EventEmitter<any> = new EventEmitter();
 
     @Output() onSort: EventEmitter<any> = new EventEmitter();
     
-    @ContentChild(Header, { static: true }) header;
+    @ContentChild(Header, { static: false }) header;
 
-    @ContentChild(Footer, { static: true }) footer;
+    @ContentChild(Footer, { static: false }) footer;
     
     @ContentChildren(PrimeTemplate) templates: QueryList<any>;
     
@@ -117,6 +111,10 @@ export class DataView implements OnInit,AfterContentInit,BlockableUI,OnChanges {
 
     filterValue: string;
 
+    _sortField: string;
+
+    _sortOrder: number = 1;
+
     initialized: boolean;
     
     constructor(public el: ElementRef) {}
@@ -128,21 +126,28 @@ export class DataView implements OnInit,AfterContentInit,BlockableUI,OnChanges {
         this.initialized = true;
     }
 
-    ngOnChanges(simpleChanges: SimpleChanges) {
-        if (simpleChanges.value) {
-            this._value = simpleChanges.value.currentValue;
-            this.updateTotalRecords();
-            
-            if (!this.lazy && this.hasFilter()) {
-                this.filter(this.filterValue);
-            }
-        }
+    @Input() get sortField(): string {
+        return this._sortField;
+    }
 
-        if (simpleChanges.sortField || simpleChanges.sortOrder) {
-            //avoid triggering lazy load prior to lazy initialization at onInit
-            if (!this.lazy || this.initialized) {
-                this.sort();
-            }
+    set sortField(val: string) {
+        this._sortField = val;
+
+        //avoid triggering lazy load prior to lazy initialization at onInit
+        if ( !this.lazy || this.initialized ) {
+            this.sort();
+        }
+    }
+
+    @Input() get sortOrder(): number {
+        return this._sortOrder;
+    }
+    set sortOrder(val: number) {
+        this._sortOrder = val;
+
+         //avoid triggering lazy load prior to lazy initialization at onInit
+        if ( !this.lazy || this.initialized ) {
+            this.sort();
         }
     }
     
@@ -182,6 +187,18 @@ export class DataView implements OnInit,AfterContentInit,BlockableUI,OnChanges {
         }
     }
     
+    @Input() get value(): any[] {
+        return this._value;
+    }
+
+    set value(val:any[]) {
+        this._value = val;
+        this.updateTotalRecords();
+        if (!this.lazy && this.hasFilter()) {
+            this.filter(this.filterValue);
+        }
+    }
+
     changeLayout(layout: string) {
         this.layout = layout;
         this.updateItemTemplate();

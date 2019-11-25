@@ -3,13 +3,13 @@ import {NgModule,Component,ElementRef,OnInit,AfterViewInit,AfterContentInit,Afte
         QueryList,ViewChild,TemplateRef,forwardRef,ChangeDetectorRef,NgZone,ViewRef} from '@angular/core';
 import {trigger,state,style,transition,animate,AnimationEvent} from '@angular/animations';
 import {CommonModule} from '@angular/common';
-import {SelectItem} from 'primeng/api';
-import {SharedModule,PrimeTemplate} from 'primeng/api';
-import {DomHandler} from 'primeng/dom';
-import {ObjectUtils} from 'primeng/utils';
+import {SelectItem} from '../common/selectitem';
+import {SharedModule,PrimeTemplate} from '../common/shared';
+import {DomHandler} from '../dom/domhandler';
+import {ObjectUtils} from '../utils/objectutils';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
-import { FilterUtils } from 'primeng/utils';
-import {TooltipModule} from 'primeng/tooltip';
+import { FilterUtils } from '../utils/filterutils';
+import {TooltipModule} from '../tooltip/tooltip';
 
 export const DROPDOWN_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -242,17 +242,27 @@ export class Dropdown implements OnInit,AfterViewInit,AfterContentInit,AfterView
 
     @Output() onHide: EventEmitter<any> = new EventEmitter();
     
-    @ViewChild('container', { static: true }) containerViewChild: ElementRef;
+    @ViewChild('container', { static: false }) containerViewChild: ElementRef;
     
     @ViewChild('filter', { static: false }) filterViewChild: ElementRef;
     
-    @ViewChild('in', { static: true }) focusViewChild: ElementRef;
+    @ViewChild('in', { static: false }) focusViewChild: ElementRef;
 
-    @ViewChild(CdkVirtualScrollViewport, {static: false }) viewPort: CdkVirtualScrollViewport;
+    @ViewChild(CdkVirtualScrollViewport, {static:false}) viewPort: CdkVirtualScrollViewport;
 
     @ViewChild('editableInput', { static: false }) editableInputViewChild: ElementRef;
     
     @ContentChildren(PrimeTemplate) templates: QueryList<any>;
+
+    private _autoWidth: boolean;
+
+    @Input() get autoWidth(): boolean {
+        return this._autoWidth;
+    }
+    set autoWidth(_autoWidth: boolean) {
+        this._autoWidth = _autoWidth;
+        console.log("Setting autoWidth has no effect as automatic width calculation is removed for better perfomance.");
+    }
 
     private _disabled: boolean;
 

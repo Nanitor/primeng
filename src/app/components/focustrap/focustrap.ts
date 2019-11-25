@@ -1,6 +1,6 @@
 import {NgModule,Directive,ElementRef,HostListener} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DomHandler} from 'primeng/dom';
+import {DomHandler} from '../dom/domhandler';
 
 @Directive({
     selector: '[pFocusTrap]',

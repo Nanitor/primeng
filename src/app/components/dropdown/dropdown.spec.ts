@@ -1,11 +1,11 @@
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { TestBed, ComponentFixture, tick, fakeAsync, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Dropdown, DropdownItem} from './dropdown';
+import {Dropdown, DropdownItem} from './dropdown';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '../../../../node_modules/@angular/forms';
 import { Component } from '@angular/core';
-import { TooltipModule } from 'primeng/tooltip';
+import { TooltipModule } from '../tooltip/tooltip';
 
 @Component({
 	template: `

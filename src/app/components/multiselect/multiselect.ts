@@ -2,14 +2,14 @@ import { NgModule, Component, ElementRef, OnInit, AfterViewInit, AfterContentIni
     forwardRef, ViewChild, ChangeDetectorRef, TemplateRef, ContentChildren, QueryList, ContentChild } from '@angular/core';
 import { trigger,state,style,transition,animate,AnimationEvent} from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { SelectItem } from 'primeng/api';
-import { DomHandler } from 'primeng/dom';
-import { ObjectUtils } from 'primeng/utils';
-import { SharedModule, PrimeTemplate, Footer, Header } from 'primeng/api';
+import { SelectItem } from '../common/selectitem';
+import { DomHandler } from '../dom/domhandler';
+import { ObjectUtils } from '../utils/objectutils';
+import { SharedModule, PrimeTemplate, Footer, Header } from '../common/shared';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { FilterUtils } from 'primeng/utils';
-import {TooltipModule} from 'primeng/tooltip';
+import { FilterUtils } from '../utils/filterutils';
+import {TooltipModule} from '../tooltip/tooltip';
 
 export const MULTISELECT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -88,7 +88,7 @@ export class MultiSelectItem {
                 <span class="ui-multiselect-trigger-icon ui-clickable" [ngClass]="dropdownIcon"></span>
             </div>
             <div *ngIf="overlayVisible" [ngClass]="['ui-multiselect-panel ui-widget ui-widget-content ui-corner-all ui-shadow']" [@overlayAnimation]="{value: 'visible', params: {showTransitionParams: showTransitionOptions, hideTransitionParams: hideTransitionOptions}}" (@overlayAnimation.start)="onOverlayAnimationStart($event)"
-                [ngStyle]="panelStyle" [class]="panelStyleClass" (click)="panelClick=true" (keydown)="onKeydown($event)">
+                [ngStyle]="panelStyle" [class]="panelStyleClass" (click)="panelClick=true">
                 <div class="ui-widget-header ui-corner-all ui-multiselect-header ui-helper-clearfix" [ngClass]="{'ui-multiselect-header-no-toggleall': !showToggleAll}" *ngIf="showHeader">
                 <ng-content select="p-header"></ng-content>  
                 <div class="ui-chkbox ui-widget" *ngIf="showToggleAll && !selectionLimit">
@@ -241,13 +241,13 @@ export class MultiSelect implements OnInit,AfterViewInit,AfterContentInit,AfterV
 
     @Input() tooltipStyleClass: string;
 
-    @ViewChild('container', { static: true }) containerViewChild: ElementRef;
+    @ViewChild('container', { static: false }) containerViewChild: ElementRef;
     
     @ViewChild('filterInput', { static: false }) filterInputChild: ElementRef;
 
-    @ContentChild(Footer, { static: true }) footerFacet;
+    @ContentChild(Footer, { static: false }) footerFacet;
 
-    @ContentChild(Header, { static: true }) headerFacet;
+    @ContentChild(Header, { static: false }) headerFacet;
     
     @ContentChildren(PrimeTemplate) templates: QueryList<any>;
     

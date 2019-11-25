@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../../components/domain/car';
 import { CarService } from '../../service/carservice';
-import { LazyLoadEvent } from 'primeng/api';
-import { FilterMetadata } from 'primeng/api';
+import { LazyLoadEvent } from '../../../components/common/api';
+import { FilterMetadata } from '../../../components/common/api';
 
 @Component({
     templateUrl: './tablelazydemo.html'

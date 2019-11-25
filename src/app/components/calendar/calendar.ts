@@ -1,10 +1,10 @@
-import {NgModule,Component,ElementRef,OnDestroy,OnInit,Input,Output,EventEmitter,forwardRef,Renderer2,
+import {NgModule,Component,ElementRef,OnDestroy,OnInit,Input,Output,SimpleChange,EventEmitter,forwardRef,Renderer2,
         ViewChild,ChangeDetectorRef,TemplateRef,ContentChildren,QueryList, NgZone} from '@angular/core';
 import {trigger,state,style,transition,animate,AnimationEvent} from '@angular/animations';
 import {CommonModule} from '@angular/common';
-import {ButtonModule} from 'primeng/button';
-import {DomHandler} from 'primeng/dom';
-import {SharedModule,PrimeTemplate} from 'primeng/api';
+import {ButtonModule} from '../button/button';
+import {DomHandler} from '../dom/domhandler';
+import {SharedModule,PrimeTemplate} from '../common/shared';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
 export const CALENDAR_VALUE_ACCESSOR: any = {
@@ -31,7 +31,7 @@ export interface LocaleSettings {
     template:  `
         <span [ngClass]="{'ui-calendar':true, 'ui-calendar-w-btn': showIcon, 'ui-calendar-timeonly': timeOnly}" [ngStyle]="style" [class]="styleClass">
             <ng-template [ngIf]="!inline">
-                <input #inputfield type="text" [attr.id]="inputId" [attr.name]="name" [attr.required]="required" [attr.aria-required]="required" [value]="inputFieldValue" (focus)="onInputFocus($event)" (keydown)="onInputKeydown($event)" (click)="onInputClick($event)" (blur)="onInputBlur($event)"
+                <input #inputfield type="text" [attr.id]="inputId" [attr.name]="name" [attr.required]="required" [value]="inputFieldValue" (focus)="onInputFocus($event)" (keydown)="onInputKeydown($event)" (click)="onInputClick($event)" (blur)="onInputBlur($event)"
                     [readonly]="readonlyInput" (input)="onUserInput($event)" [ngStyle]="inputStyle" [class]="inputStyleClass" [placeholder]="placeholder||''" [disabled]="disabled" [attr.tabindex]="tabindex"
                     [ngClass]="'ui-inputtext ui-widget ui-state-default ui-corner-all'" autocomplete="off"
                     ><button type="button" [icon]="icon" pButton *ngIf="showIcon" (click)="onButtonClick($event,inputfield)" class="ui-datepicker-trigger ui-calendar-button"
@@ -352,6 +352,16 @@ export class Calendar implements OnInit,OnDestroy,ControlValueAccessor {
     @Input() tabindex: number;
 
     @ViewChild('inputfield', { static: false }) inputfieldViewChild: ElementRef;
+
+    private _utc: boolean;
+
+    @Input() get utc(): boolean {
+        return this._utc;
+    }
+    set utc(_utc: boolean) {
+        this._utc = _utc;
+        console.log("Setting utc has no effect as built-in UTC support is dropped.");
+    }
             
     value: any;
     
@@ -484,7 +494,7 @@ export class Calendar implements OnInit,OnDestroy,ControlValueAccessor {
     set yearRange(yearRange: string) {
         this._yearRange = yearRange;
         
-        if (yearRange) {
+        if (this.yearNavigator && yearRange) {
             const years = yearRange.split(':');
             const yearStart = parseInt(years[0]);
             const yearEnd = parseInt(years[1]);

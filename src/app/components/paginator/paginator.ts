@@ -1,9 +1,9 @@
-import {NgModule,Component,OnInit,Input,Output,ChangeDetectorRef,EventEmitter,TemplateRef, OnChanges, SimpleChanges} from '@angular/core';
+import {NgModule,Component,OnInit,Input,Output,ChangeDetectorRef,EventEmitter,TemplateRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {DropdownModule} from 'primeng/dropdown';
-import {SelectItem} from 'primeng/api';
-import {SharedModule} from 'primeng/api';
+import {DropdownModule} from '../dropdown/dropdown';
+import {SelectItem} from '../common/selectitem';
+import {SharedModule} from '../common/shared';
 
 @Component({
     selector: 'p-paginator',
@@ -42,7 +42,7 @@ import {SharedModule} from 'primeng/api';
         </div>
     `
 })
-export class Paginator implements OnInit, OnChanges {
+export class Paginator implements OnInit {
 
     @Input() pageLinkSize: number = 5;
 
@@ -66,19 +66,19 @@ export class Paginator implements OnInit, OnChanges {
 
     @Input() showCurrentPageReport: boolean;
 
-    @Input() totalRecords: number = 0;
-
-    @Input() rows: number = 0;
-    
-    @Input() rowsPerPageOptions: any[];
-
     pageLinks: number[];
 
+    _totalRecords: number = 0;
+
+    _first: number = 0;
+
+    _rows: number = 0;
+    
+    _rowsPerPageOptions: any[];
+    
     rowsPerPageItems: SelectItem[];
     
     paginatorState: any;
-
-    _first: number = 0;
 
     constructor(private cd: ChangeDetectorRef) {}
     
@@ -86,35 +86,45 @@ export class Paginator implements OnInit, OnChanges {
         this.updatePaginatorState();
     }
 
-    ngOnChanges(simpleChange: SimpleChanges) {
-        if (simpleChange.totalRecords) {
-            this.updatePageLinks();
-            this.updatePaginatorState();
-            this.updateFirst();
-            this.updateRowsPerPageOptions();
-        }
+    @Input() get totalRecords(): number {
+        return this._totalRecords;
+    }
 
-        if (simpleChange.first) {
-            this._first = simpleChange.first.currentValue;
-            this.updatePageLinks();
-            this.updatePaginatorState();
-        }
-
-        if (simpleChange.rows) {
-            this.updatePageLinks();
-            this.updatePaginatorState();
-        }
-
-        if (simpleChange.rowsPerPageOptions) {
-            this.updateRowsPerPageOptions();
-        }
+    set totalRecords(val:number) {
+        this._totalRecords = val;
+        this.updatePageLinks();
+        this.updatePaginatorState();
+        this.updateFirst();
+        this.updateRowsPerPageOptions();
     }
 
     @Input() get first(): number {
         return this._first;
     }
+
     set first(val:number) {
         this._first = val;
+        this.updatePageLinks();
+        this.updatePaginatorState();
+    }
+
+    @Input() get rows(): number {
+        return this._rows;
+    }
+
+    set rows(val:number) {
+        this._rows = val;
+        this.updatePageLinks();
+        this.updatePaginatorState();
+    }
+    
+    @Input() get rowsPerPageOptions(): any[] {
+        return this._rowsPerPageOptions;
+    }
+
+    set rowsPerPageOptions(val:any[]) {
+        this._rowsPerPageOptions = val;
+        this.updateRowsPerPageOptions();
     }
 
     updateRowsPerPageOptions() {
@@ -173,7 +183,7 @@ export class Paginator implements OnInit, OnChanges {
         var pc = this.getPageCount();
 
         if(p >= 0 && p < pc) {
-            this._first = this.rows * p;
+            this.first = this.rows * p;
             var state = {
                 page: p,
                 first: this.first,

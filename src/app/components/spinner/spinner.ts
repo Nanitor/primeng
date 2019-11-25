@@ -1,6 +1,6 @@
 import {NgModule,Component,ElementRef,AfterViewInit,Input,Output,EventEmitter,forwardRef,ViewChild, ChangeDetectorRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {InputTextModule} from 'primeng/inputtext';
+import {InputTextModule} from '../inputtext/inputtext';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
 export const SPINNER_VALUE_ACCESSOR: any = {
@@ -101,9 +101,13 @@ export class Spinner implements AfterViewInit,ControlValueAccessor {
 
     thousandRegExp: RegExp;
     
-    @ViewChild('inputfield', { static: true }) inputfieldViewChild: ElementRef;
+    @ViewChild('inputfield', { static: false }) inputfieldViewChild: ElementRef;
     
     constructor(public el: ElementRef, public cd: ChangeDetectorRef) {}
+
+    @Input() set type(value: string) {
+        console.warn("type property is removed as Spinner does not format the value anymore");
+    }
 
     ngAfterViewInit() {
         if(this.value && this.value.toString().indexOf('.') > 0) {

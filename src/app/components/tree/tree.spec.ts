@@ -2,10 +2,10 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Tree, UITreeNode } from './tree';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ContextMenu, ContextMenuSub } from 'primeng/contextmenu';
+import { ContextMenu, ContextMenuSub } from '../contextmenu/contextmenu';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
-import { TreeDragDropService } from 'primeng/api';
+import { TreeDragDropService } from '../common/api';
 
 @Component({
 	template: `
@@ -18,7 +18,7 @@ import { TreeDragDropService } from 'primeng/api';
   })
   class TestTreeComponent implements OnInit {
 
-	@ViewChild('cm', { static: true }) cm: ElementRef;
+	@ViewChild('cm', { static: false }) cm:ElementRef;
 
 	filesTree7: any;
 

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {SelectItem} from 'primeng/api';
-import {SelectItemGroup} from 'primeng/api';
+import {SelectItem} from '../../../components/common/api';
+import {SelectItemGroup} from '../../../components/common/api';
 
 interface City {
     name: string,

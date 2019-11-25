@@ -1,7 +1,7 @@
-import { NgModule, Component, Input, ElementRef, ContentChild } from '@angular/core';
+import { NgModule, Component, Input, Output, EventEmitter, ElementRef, ContentChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule, Header, Footer } from 'primeng/api';
-import { BlockableUI } from 'primeng/api';
+import { SharedModule, Header, Footer } from '../common/shared';
+import { BlockableUI } from '../common/blockableui';
 
 @Component({
     selector: 'p-card',
@@ -33,9 +33,9 @@ export class Card implements BlockableUI {
 
     @Input() styleClass: string;
 
-    @ContentChild(Header, { static: true }) headerFacet;
+    @ContentChild(Header, { static: false }) headerFacet;
 
-    @ContentChild(Footer, { static: true }) footerFacet;
+    @ContentChild(Footer, { static: false }) footerFacet;
 
     constructor(private el: ElementRef) { }
 

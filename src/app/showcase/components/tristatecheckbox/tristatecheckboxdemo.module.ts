@@ -1,11 +1,11 @@
-import {NgModule} from '@angular/core';
+import {NgModule}     from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule}    from '@angular/forms';
 import {TriStateCheckboxDemo} from './tristatecheckboxdemo';
 import {TriStateCheckboxDemoRoutingModule} from './tristatecheckboxdemo-routing.module';
-import {TriStateCheckboxModule} from 'primeng/tristatecheckbox';
-import {TabViewModule} from 'primeng/tabview';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {TriStateCheckboxModule} from '../../../components/tristatecheckbox/tristatecheckbox';
+import {TabViewModule} from '../../../components/tabview/tabview';
+import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
 
 @NgModule({
 	imports: [

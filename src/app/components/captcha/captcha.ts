@@ -5,7 +5,7 @@ import {CommonModule} from '@angular/common';
     selector: 'p-captcha',
     template: `<div></div>`
 })
-export class Captcha implements AfterViewInit,OnDestroy {
+export class Captcha implements AfterViewInit {
 
     @Input() siteKey: string = null;
         

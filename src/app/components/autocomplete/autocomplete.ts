@@ -1,11 +1,11 @@
-import {NgModule,Component,ViewChild,ElementRef,AfterViewChecked,AfterContentInit,OnDestroy,Input,Output,EventEmitter,ContentChildren,QueryList,TemplateRef,Renderer2,forwardRef,ChangeDetectorRef,IterableDiffers} from '@angular/core';
+import {NgModule,Component,ViewChild,ElementRef,AfterViewChecked,AfterContentInit,DoCheck,OnDestroy,Input,Output,EventEmitter,ContentChildren,QueryList,TemplateRef,Renderer2,forwardRef,ChangeDetectorRef,IterableDiffers} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {trigger,state,style,transition,animate,AnimationEvent} from '@angular/animations';
-import {InputTextModule} from 'primeng/inputtext';
-import {ButtonModule} from 'primeng/button';
-import {SharedModule,PrimeTemplate} from 'primeng/api';
-import {DomHandler} from 'primeng/dom';
-import {ObjectUtils} from 'primeng/utils';
+import {InputTextModule} from '../inputtext/inputtext';
+import {ButtonModule} from '../button/button';
+import {SharedModule,PrimeTemplate} from '../common/shared';
+import {DomHandler} from '../dom/domhandler';
+import {ObjectUtils} from '../utils/objectutils';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
 export const AUTOCOMPLETE_VALUE_ACCESSOR: any = {
@@ -70,7 +70,7 @@ export const AUTOCOMPLETE_VALUE_ACCESSOR: any = {
     },
     providers: [AUTOCOMPLETE_VALUE_ACCESSOR]
 })
-export class AutoComplete implements AfterViewChecked,AfterContentInit,OnDestroy,ControlValueAccessor {
+export class AutoComplete implements AfterViewChecked,AfterContentInit,DoCheck,OnDestroy,ControlValueAccessor {
 
     @Input() minLength: number = 1;
 
@@ -156,6 +156,8 @@ export class AutoComplete implements AfterViewChecked,AfterContentInit,OnDestroy
 
     @Input() emptyMessage: string;
 
+    @Input() immutable: boolean = true;
+
     @Input() showTransitionOptions: string = '225ms ease-out';
 
     @Input() hideTransitionOptions: string = '195ms ease-in';
@@ -230,7 +232,20 @@ export class AutoComplete implements AfterViewChecked,AfterContentInit,OnDestroy
 
     set suggestions(val:any[]) {
         this._suggestions = val;
-        this.handleSuggestionsChange();
+        
+        if (this.immutable) {
+            this.handleSuggestionsChange();
+        }
+    }
+
+    ngDoCheck() {
+        if (!this.immutable) {
+            let changes = this.differ.diff(this.suggestions);
+
+            if (changes) {
+                this.handleSuggestionsChange();
+            }
+        }
     }
 
     ngAfterViewChecked() {

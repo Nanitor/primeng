@@ -1,14 +1,16 @@
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Table, TableModule } from './table';
+import { Table, TableBody, ScrollableView, SortableColumn, SelectableRow, RowToggler, ContextMenuRow, ResizableColumn, ReorderableColumn, EditableColumn, CellEditor, SortIcon, TableRadioButton, TableCheckbox, TableHeaderCheckbox, ReorderableRowHandle, ReorderableRow, SelectableRowDblClick, TableModule } from './table';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Component } from '@angular/core';
-import { DropdownModule} from 'primeng/dropdown';
+import { Paginator } from '../paginator/paginator';
+import {Dropdown, DropdownItem, DropdownModule} from '../dropdown/dropdown';
 import { FormsModule } from '@angular/forms';
-import { SharedModule } from 'primeng/api';
-import { ContextMenu, ContextMenuModule } from 'primeng/contextmenu';
+import { SharedModule } from '../common/shared';
+import { ContextMenu, ContextMenuSub, ContextMenuModule } from '../contextmenu/contextmenu';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TooltipModule } from '../tooltip/tooltip';
 
 @Component({
     template: `

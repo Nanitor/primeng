@@ -1,7 +1,7 @@
 import { NgModule,Component,ElementRef,AfterViewInit,OnDestroy,Input,Output,Renderer2,Inject,forwardRef,ViewChild,NgZone,EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DomHandler } from 'primeng/dom';
-import { MenuItem } from 'primeng/api';
+import { DomHandler } from '../dom/domhandler';
+import { MenuItem } from '../common/menuitem';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -163,7 +163,7 @@ export class ContextMenu implements AfterViewInit, OnDestroy {
     
     @Output() onHide: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild('container', { static: true }) containerViewChild: ElementRef;
+    @ViewChild('container', { static: false }) containerViewChild: ElementRef;
 
     parentActive: boolean;
 

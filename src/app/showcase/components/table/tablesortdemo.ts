@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../../components/domain/car';
 import { CarService } from '../../service/carservice';
-import { SortEvent } from 'primeng/api';
+import { SortEvent } from '../../../components/common/api';
 
 @Component({
     templateUrl: './tablesortdemo.html'

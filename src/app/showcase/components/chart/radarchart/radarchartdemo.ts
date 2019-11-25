@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Message} from '../../../../components/common/api';
 
 @Component({
     templateUrl: './radarchartdemo.html'

@@ -3,19 +3,6 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-      "primeng-library": {
-        "root": "src",
-        "projectType": "library",
-        "architect": {
-            "build": {
-            "builder": "@angular-devkit/build-ng-packagr:build",
-            "options": {
-                "project": "src/app/components/ng-package.json",
-                "tsConfig": "src/app/components/tsconfig.lib.json"
-            }
-            }
-        }
-      },
       "primeng": {
         "projectType": "application",
         "root": "",
@@ -122,8 +109,8 @@
             "builder": "@angular-devkit/build-angular:tslint",
             "options": {
               "tsConfig": [
-                "tsconfig.app.json",
-                "tsconfig.spec.json",
+                "src/tsconfig.app.json",
+                "src/tsconfig.spec.json",
                 "e2e/tsconfig.json"
               ],
               "exclude": [

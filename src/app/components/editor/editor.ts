@@ -1,7 +1,7 @@
-import {NgModule,Component,ElementRef,AfterViewInit,Input,Output,EventEmitter,ContentChild,forwardRef} from '@angular/core';
+import {NgModule,Component,ElementRef,AfterViewInit,Input,Output,EventEmitter,ContentChild,OnChanges,forwardRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SharedModule,Header} from 'primeng/api'
-import {DomHandler} from 'primeng/dom';
+import {SharedModule,Header} from '../common/shared'
+import {DomHandler} from '../dom/domhandler';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 import * as Quill from "quill";
 
@@ -70,7 +70,7 @@ export class Editor implements AfterViewInit,ControlValueAccessor {
     
     @Output() onSelectionChange: EventEmitter<any> = new EventEmitter();
     
-    @ContentChild(Header, { static: true }) toolbar;
+    @ContentChild(Header, { static: false }) toolbar;
     
     @Input() style: any;
         
