@@ -387,7 +387,7 @@ describe('Slider', () => {
     it('should select range with min and max options', () => {
         slider.range = true;
         slider.handleValues = [20,80];
-        slider.values = 20;
+        slider.values = [20,80];
         slider.min = 19;
         slider.max = 81;
         fixture.detectChanges();

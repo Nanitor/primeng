@@ -54,6 +54,6 @@ gulp.task('clean', function() {
 });
 
 //Building project with run sequence
-gulp.task('build-assets', ['clean','copy-component-css', 'build-css-prod', 'images', 'themes', 'build-exports']);
+gulp.task('build-assets', ['clean','copy-component-css', 'build-css-prod', 'images', 'themes']);
 
         

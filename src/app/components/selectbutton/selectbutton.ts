@@ -1,4 +1,4 @@
-import {NgModule,Component,Input,Output,EventEmitter,forwardRef,ChangeDetectorRef,ContentChild,TemplateRef} from '@angular/core';
+import {NgModule,Component,Input,Output,EventEmitter,forwardRef,ChangeDetectorRef,ContentChild,TemplateRef, SimpleChanges, OnChanges} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SelectItem} from 'primeng/api';
 import {ObjectUtils} from 'primeng/utils';
@@ -30,7 +30,7 @@ export const SELECTBUTTON_VALUE_ACCESSOR: any = {
     `,
     providers: [SELECTBUTTON_VALUE_ACCESSOR]
 })
-export class SelectButton implements ControlValueAccessor {
+export class SelectButton implements ControlValueAccessor, OnChanges {
 
     @Input() tabindex: number = 0;
 
@@ -69,8 +69,13 @@ export class SelectButton implements ControlValueAccessor {
     }
 
     set options(val: any[]) {
-        let opts = this.optionLabel ? ObjectUtils.generateSelectItems(val, this.optionLabel) : val;
-        this._options = opts;
+        //NoOp
+    }
+
+    ngOnChanges(simpleChange: SimpleChanges) {
+        if (simpleChange.options) {
+            this._options = this.optionLabel ? ObjectUtils.generateSelectItems(simpleChange.options.currentValue, this.optionLabel) : simpleChange.options.currentValue;
+        }
     }
     
     writeValue(value: any) : void {

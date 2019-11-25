@@ -1,4 +1,4 @@
-import { NgModule, Component, HostListener, OnInit, OnDestroy, AfterViewInit, AfterViewChecked, Directive, Optional, AfterContentInit, Input, Output, EventEmitter, ElementRef, ContentChildren, TemplateRef, QueryList, ViewChild, NgZone, ChangeDetectorRef} from '@angular/core';
+import { NgModule, Component, HostListener, OnInit, OnDestroy, AfterViewInit, AfterViewChecked, Directive, Optional, AfterContentInit, Input, Output, EventEmitter, ElementRef, ContentChildren, TemplateRef, QueryList, ViewChild, NgZone, EmbeddedViewRef, ViewContainerRef, ChangeDetectorRef, OnChanges, SimpleChanges} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PrimeTemplate, SharedModule } from 'primeng/api';
 import { PaginatorModule } from 'primeng/paginator';
@@ -88,7 +88,7 @@ export class TableService {
 
             <div class="ui-table-scrollable-wrapper" *ngIf="scrollable">
                <div class="ui-table-scrollable-view ui-table-frozen-view" *ngIf="frozenColumns||frozenBodyTemplate" [pScrollableView]="frozenColumns" [frozen]="true" [ngStyle]="{width: frozenWidth}" [scrollHeight]="scrollHeight"></div>
-               <div #scrollableView class="ui-table-scrollable-view" [pScrollableView]="columns" [frozen]="false" [scrollHeight]="scrollHeight" [ngStyle]="{left: frozenWidth, width: 'calc(100% - '+frozenWidth+')'}"></div>
+               <div class="ui-table-scrollable-view" [pScrollableView]="columns" [frozen]="false" [scrollHeight]="scrollHeight" [ngStyle]="{left: frozenWidth, width: 'calc(100% - '+frozenWidth+')'}"></div>
             </div>
             
             <p-paginator [rows]="rows" [first]="first" [totalRecords]="totalRecords" [pageLinkSize]="pageLinks" styleClass="ui-paginator-bottom" [alwaysShow]="alwaysShowPaginator"
@@ -108,7 +108,7 @@ export class TableService {
     `,
     providers: [TableService]
 })
-export class Table implements OnInit, AfterViewInit, AfterContentInit, BlockableUI {
+export class Table implements OnInit, AfterViewInit, AfterContentInit, BlockableUI, OnChanges {
     
     @Input() frozenColumns: any[];
 
@@ -277,10 +277,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
     @ViewChild('reorderIndicatorDown', { static: false }) reorderIndicatorDownViewChild: ElementRef;
 
     @ViewChild('table', { static: false }) tableViewChild: ElementRef;
-
-    @ViewChild('table') tableViewChild: ElementRef;
-
-    @ViewChild('scrollableView') scrollableView: ScrollableView;
 
     @ContentChildren(PrimeTemplate) templates: QueryList<PrimeTemplate>;
 
@@ -481,32 +477,86 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
         }
     }
 
+    ngOnChanges(simpleChange: SimpleChanges) {
+        if (simpleChange.value) {
+            if (this.isStateful() && !this.stateRestored) {
+                this.restoreState();
+            }
+    
+            this._value = simpleChange.value.currentValue;
+            
+            if (!this.lazy) {
+                this.totalRecords = (this._value ? this._value.length : 0);
+                
+                if (this.sortMode == 'single' && this.sortField)
+                    this.sortSingle();
+                else if (this.sortMode == 'multiple' && this.multiSortMeta)
+                    this.sortMultiple();
+                else if(this.hasFilter())       //sort already filters
+                    this._filter();
+            }
+    
+            if(this.virtualScroll && this.virtualScrollCallback) {
+                this.virtualScrollCallback();
+            }
+    
+            this.tableService.onValueChange(simpleChange.value.currentValue);
+        }
+
+        if (simpleChange.columns) {
+            this._columns = simpleChange.columns.currentValue;
+            this.tableService.onColumnsChange(simpleChange.columns.currentValue);
+
+            if (this._columns && this.isStateful() && this.reorderableColumns && !this.columnOrderStateRestored ) {
+                this.restoreColumnOrder();
+            }
+        }
+
+        if (simpleChange.sortField) {
+            this._sortField = simpleChange.sortField.currentValue;
+
+            //avoid triggering lazy load prior to lazy initialization at onInit
+            if ( !this.lazy || this.initialized ) {
+                if (this.sortMode === 'single') {
+                    this.sortSingle();
+                }
+            }
+        }
+
+        if (simpleChange.sortOrder) {
+            this._sortOrder = simpleChange.sortOrder.currentValue;
+
+            //avoid triggering lazy load prior to lazy initialization at onInit
+            if ( !this.lazy || this.initialized ) {
+                if (this.sortMode === 'single') {
+                    this.sortSingle();
+                }
+            }
+        }
+
+        if (simpleChange.multiSortMeta) {
+            this._multiSortMeta = simpleChange.multiSortMeta.currentValue;
+            if (this.sortMode === 'multiple') {
+                this.sortMultiple();
+            }
+        }
+
+        if (simpleChange.selection) {
+            this._selection = simpleChange.selection.currentValue;
+
+            if(!this.preventSelectionSetterPropagation) {
+                this.updateSelectionKeys();
+                this.tableService.onSelectionChange();
+            }
+            this.preventSelectionSetterPropagation = false;
+        }
+    }
+
     @Input() get value(): any[] {
         return this._value;
     }
     set value(val: any[]) {
-        if (this.isStateful() && !this.stateRestored) {
-            this.restoreState();
-        }
-
         this._value = val;
-        
-        if (!this.lazy) {
-            this.totalRecords = (this._value ? this._value.length : 0);
-
-            if (this.sortMode == 'single' && this.sortField)
-                this.sortSingle();
-            else if (this.sortMode == 'multiple' && this.multiSortMeta)
-                this.sortMultiple();
-            else if(this.hasFilter())       //sort already filters
-                this._filter();
-        }
-
-        if (this.virtualScroll && this.virtualScrollCallback) {
-            this.virtualScrollCallback();
-        }
-
-        this.tableService.onValueChange(val);
     }
 
     @Input() get columns(): any[] {
@@ -514,11 +564,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
     }
     set columns(cols: any[]) {
         this._columns = cols;
-        this.tableService.onColumnsChange(cols);
-
-        if (this._columns && this.isStateful() && this.reorderableColumns && !this.columnOrderStateRestored) {
-            this.restoreColumnOrder();
-        }
     }
 
     @Input() get first(): number {
@@ -549,13 +594,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
 
     set sortField(val: string) {
         this._sortField = val;
-
-        //avoid triggering lazy load prior to lazy initialization at onInit
-        if ( !this.lazy || this.initialized ) {
-            if (this.sortMode === 'single') {
-                this.sortSingle();
-            }
-        }
     }
 
     @Input() get sortOrder(): number {
@@ -563,13 +601,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
     }
     set sortOrder(val: number) {
         this._sortOrder = val;
-
-         //avoid triggering lazy load prior to lazy initialization at onInit
-        if ( !this.lazy || this.initialized ) {
-            if (this.sortMode === 'single') {
-                this.sortSingle();
-            }
-        }
     }
 
     @Input() get multiSortMeta(): SortMeta[] {
@@ -578,9 +609,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
 
     set multiSortMeta(val: SortMeta[]) {
         this._multiSortMeta = val;
-        if (this.sortMode === 'multiple') {
-            this.sortMultiple();
-        }
     }
 
     @Input() get selection(): any {
@@ -588,13 +616,7 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
     }
 
     set selection(val: any) {
-        this._selection = val;
-
-        if(!this.preventSelectionSetterPropagation) {
-            this.updateSelectionKeys();
-            this.tableService.onSelectionChange();
-        }
-        this.preventSelectionSetterPropagation = false;
+        this._selection = val;        
     }
 
     updateSelectionKeys() {
@@ -638,7 +660,7 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
     sort(event) {
         let originalEvent = event.originalEvent;
 
-        if(this.sortMode === 'single') {
+        if (this.sortMode === 'single') {
             this._sortOrder = (this.sortField === event.field) ? this.sortOrder * -1 : this.defaultSortOrder;
             this._sortField = event.field;
             this.sortSingle();
@@ -732,9 +754,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
 
     sortMultiple() {
         if(this.multiSortMeta) {
-            if(this.resetPageOnSort) {
-                this.first = 0;
-            }
             if (this.lazy) {
                 this.onLazyLoad.emit(this.createLazyLoadMetadata());
             }
@@ -1346,8 +1365,8 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
         let data = this.filteredValue || this.value;
         let csv = '';
 
-        if (options &&  options.selectionOnly) {
-            data = options.selection || this.selection || [];
+        if (options && options.selectionOnly) {
+            data = this.selection || [];
         }
         
         //headers
@@ -1471,17 +1490,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
         delete this.editingRowKeys[dataKeyValue];
     }
 
-    public getScrollPosition() {
-        return this.scrollableView ? this.scrollableView.getScrollPosition() : 0;
-    }
-
-    public setScrollPosition(scrollPosition: number) {
-        let scrollableViewComponent: ScrollableView = this.scrollableView as ScrollableView;
-        if (scrollableViewComponent) {
-            scrollableViewComponent.setScrollPosition(scrollPosition);
-        }
-    }
-
     toggleRow(rowData: any, event?: Event) {
         if(!this.dataKey) {
             throw new Error('dataKey must be defined to use row expansion');
@@ -1603,12 +1611,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
                         let containerWidth = this.tableViewChild.nativeElement.style.width;
                         this.containerViewChild.nativeElement.style.width = containerWidth + 'px';
                     }
-                }
-                else {
-                    this.tableViewChild.nativeElement.style.width = this.tableViewChild.nativeElement.offsetWidth + delta + 'px';
-                    column.style.width = newColumnWidth + 'px';
-                    let containerWidth = this.tableViewChild.nativeElement.style.width;
-                    this.containerViewChild.nativeElement.style.width = containerWidth + 'px';
                 }
             }
 
@@ -2401,30 +2403,6 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
                 });
             }
         }
-    }
-
-    getScrollPosition() {
-        return this.scrollBodyViewChild.nativeElement.scrollTop;
-    }
-
-    setScrollPosition(scrollposition: number) {
-        let pageHeight = this.dt.virtualRowHeight * this.dt.rows;
-        let virtualTableHeight = this.domHandler.getOuterHeight(this.virtualScrollerViewChild.nativeElement);
-        let pageCount = (virtualTableHeight / pageHeight)||1;
-
-        this.scrollBodyViewChild.nativeElement.scrollTop = scrollposition;
-
-        let page = Math.floor((this.scrollBodyViewChild.nativeElement.scrollTop * pageCount) / (this.scrollBodyViewChild.nativeElement.scrollHeight)) + 1;
-        this.dt.handleVirtualScroll({
-            page: page,
-            callback: () => {
-                this.scrollTableViewChild.nativeElement.style.top = ((page - 1) * pageHeight) + 'px';
-
-                if (this.frozenSiblingBody) {
-                    (<HTMLElement> this.frozenSiblingBody.children[0]).style.top = this.scrollTableViewChild.nativeElement.style.top;
-                }
-            }
-        });
     }
 
     setScrollHeight() {
