@@ -88,7 +88,7 @@ export class TableService {
 
             <div class="ui-table-scrollable-wrapper" *ngIf="scrollable">
                <div class="ui-table-scrollable-view ui-table-frozen-view" *ngIf="frozenColumns||frozenBodyTemplate" [pScrollableView]="frozenColumns" [frozen]="true" [ngStyle]="{width: frozenWidth}" [scrollHeight]="scrollHeight"></div>
-               <div class="ui-table-scrollable-view" [pScrollableView]="columns" [frozen]="false" [scrollHeight]="scrollHeight" [ngStyle]="{left: frozenWidth, width: 'calc(100% - '+frozenWidth+')'}"></div>
+               <div #scrollableView class="ui-table-scrollable-view" [pScrollableView]="columns" [frozen]="false" [scrollHeight]="scrollHeight" [ngStyle]="{left: frozenWidth, width: 'calc(100% - '+frozenWidth+')'}"></div>
             </div>
             
             <p-paginator [rows]="rows" [first]="first" [totalRecords]="totalRecords" [pageLinkSize]="pageLinks" styleClass="ui-paginator-bottom" [alwaysShow]="alwaysShowPaginator"
@@ -279,6 +279,8 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
     @ViewChild('table', { static: false }) tableViewChild: ElementRef;
 
     @ContentChildren(PrimeTemplate) templates: QueryList<PrimeTemplate>;
+
+    @ViewChild('scrollableView', { static: false }) scrollableView: ScrollableView;
 
     _value: any[] = [];
 
@@ -1339,8 +1341,8 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
         let data = this.filteredValue || this.value;
         let csv = '';
 
-        if (options && options.selectionOnly) {
-            data = this.selection || [];
+        if (options &&  options.selectionOnly) {
+            data = options.selection || this.selection || [];
         }
         
         //headers
@@ -1462,6 +1464,17 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
     cancelRowEdit(rowData: any) {
         let dataKeyValue = String(ObjectUtils.resolveFieldData(rowData, this.dataKey));
         delete this.editingRowKeys[dataKeyValue];
+    }
+
+    public getScrollPosition() {
+        return this.scrollableView ? this.scrollableView.getScrollPosition() : 0;
+    }
+
+    public setScrollPosition(scrollPosition: number) {
+        let scrollableViewComponent: ScrollableView = this.scrollableView as ScrollableView;
+        if (scrollableViewComponent) {
+            scrollableViewComponent.setScrollPosition(scrollPosition);
+        }
     }
 
     toggleRow(rowData: any, event?: Event) {
@@ -1833,6 +1846,9 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
     handleVirtualScroll(event) {
         this.first = (event.page - 1) * this.rows;
         this.firstChange.emit(this.first);
+        if (!this.paginator) {
+            this.first = (event.page - 1) * this.rows;
+        }
         this.virtualScrollCallback = event.callback;
         
         this.zone.run(() => {
@@ -2123,7 +2139,7 @@ export class TableBody {
                     </ng-template>
                 </tbody>
             </table>
-            <div #virtualScroller class="ui-table-virtual-scroller" *ngIf="dt.virtualScroll"></div>
+            <div #virtualScroller class="ui-table-virtual-scroller" *ngIf="dt.virtualScroll" tabIndex="100"></div>
         </div>
         <div #scrollFooter *ngIf="dt.footerTemplate" class="ui-table-scrollable-footer ui-widget-header">
             <div #scrollFooterBox class="ui-table-scrollable-footer-box">
@@ -2377,6 +2393,30 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
                 });
             }
         }
+    }
+
+    getScrollPosition() {
+        return this.scrollBodyViewChild.nativeElement.scrollTop;
+    }
+
+    setScrollPosition(scrollposition: number) {
+        let pageHeight = this.dt.virtualRowHeight * this.dt.rows;
+        let virtualTableHeight = DomHandler.getOuterHeight(this.virtualScrollerViewChild.nativeElement);
+        let pageCount = (virtualTableHeight / pageHeight)||1;
+
+        this.scrollBodyViewChild.nativeElement.scrollTop = scrollposition;
+
+        let page = Math.floor((this.scrollBodyViewChild.nativeElement.scrollTop * pageCount) / (this.scrollBodyViewChild.nativeElement.scrollHeight)) + 1;
+        this.dt.handleVirtualScroll({
+            page: page,
+            callback: () => {
+                this.scrollTableViewChild.nativeElement.style.top = ((page - 1) * pageHeight) + 'px';
+
+                if (this.frozenSiblingBody) {
+                    (<HTMLElement> this.frozenSiblingBody.children[0]).style.top = this.scrollTableViewChild.nativeElement.style.top;
+                }
+            }
+        });
     }
 
     setScrollHeight() {
