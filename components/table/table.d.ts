@@ -120,6 +120,7 @@ export declare class Table implements OnInit, AfterViewInit, AfterContentInit, B
     reorderIndicatorDownViewChild: ElementRef;
     tableViewChild: ElementRef;
     templates: QueryList<PrimeTemplate>;
+    scrollableView: ScrollableView;
     _value: any[];
     _columns: any[];
     _totalRecords: number;
@@ -221,6 +222,8 @@ export declare class Table implements OnInit, AfterViewInit, AfterContentInit, B
     initRowEdit(rowData: any): void;
     saveRowEdit(rowData: any, rowElement: HTMLTableRowElement): void;
     cancelRowEdit(rowData: any): void;
+    getScrollPosition(): any;
+    setScrollPosition(scrollPosition: number): void;
     toggleRow(rowData: any, event?: Event): void;
     isRowExpanded(rowData: any): boolean;
     isRowEditing(rowData: any): boolean;
@@ -298,6 +301,8 @@ export declare class ScrollableView implements AfterViewInit, OnDestroy, AfterVi
     onHeaderScroll(event: any): void;
     onFooterScroll(event: any): void;
     onBodyScroll(event: any): void;
+    getScrollPosition(): any;
+    setScrollPosition(scrollposition: number): void;
     setScrollHeight(): void;
     setVirtualScrollerHeight(): void;
     hasVerticalOverflow(): boolean;
