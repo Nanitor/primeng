@@ -278,8 +278,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
 
     @ViewChild('table', { static: false }) tableViewChild: ElementRef;
 
-    @ViewChild('table') tableViewChild: ElementRef;
-
     @ViewChild('scrollableView') scrollableView: ScrollableView;
 
     @ContentChildren(PrimeTemplate) templates: QueryList<PrimeTemplate>;
@@ -2409,7 +2407,7 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
 
     setScrollPosition(scrollposition: number) {
         let pageHeight = this.dt.virtualRowHeight * this.dt.rows;
-        let virtualTableHeight = this.domHandler.getOuterHeight(this.virtualScrollerViewChild.nativeElement);
+        let virtualTableHeight = DomHandler.getOuterHeight(this.virtualScrollerViewChild.nativeElement);
         let pageCount = (virtualTableHeight / pageHeight)||1;
 
         this.scrollBodyViewChild.nativeElement.scrollTop = scrollposition;
