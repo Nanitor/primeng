@@ -1,5 +1,7 @@
 import { OnInit, OnDestroy, AfterViewInit, AfterViewChecked, AfterContentInit, EventEmitter, ElementRef, TemplateRef, QueryList, NgZone, ChangeDetectorRef } from '@angular/core';
 import { Column, PrimeTemplate } from '../common/shared';
+import { DomHandler } from '../dom/domhandler';
+import { ObjectUtils } from '../utils/objectutils';
 import { SortMeta } from '../common/sortmeta';
 import { FilterMetadata } from '../common/filtermetadata';
 import { BlockableUI } from '../common/blockableui';

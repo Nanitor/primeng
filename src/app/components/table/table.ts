@@ -7,7 +7,6 @@ import { ObjectUtils } from '../utils/objectutils';
 import { SortMeta } from '../common/sortmeta';
 import { TableState } from '../common/tablestate';
 import { FilterMetadata } from '../common/filtermetadata';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Injectable } from '@angular/core';
 import { BlockableUI } from '../common/blockableui';
 import { Subject, Subscription } from 'rxjs';

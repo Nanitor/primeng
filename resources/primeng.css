@@ -4687,11 +4687,11 @@ input[type=text]::-ms-clear {
 .ui-radiobutton {
     vertical-align: middle;
 }
-.ui-rating {
-    font-size: 1.25em;
-}
 .ui-fluid .fc .ui-button {
     width: auto;
+}
+.ui-rating {
+    font-size: 1.25em;
 }
 .ui-scrollpanel-wrapper {
     overflow: hidden;
