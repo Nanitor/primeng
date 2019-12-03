@@ -278,8 +278,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
 
     @ViewChild('table', { static: false }) tableViewChild: ElementRef;
 
-    @ViewChild('scrollableView') scrollableView: ScrollableView;
-
     @ContentChildren(PrimeTemplate) templates: QueryList<PrimeTemplate>;
 
     @ViewChild('scrollableView', { static: false }) scrollableView: ScrollableView;
@@ -1848,6 +1846,12 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
         this.onRowDragEnd(event);
     }
 
+    public setFocusToList() {
+        if (this.scrollableView) {
+            this.scrollableView.setFocusToList();
+        }
+    }
+
     handleVirtualScroll(event) {
         this.first = (event.page - 1) * this.rows;
         this.firstChange.emit(this.first);
@@ -2481,6 +2485,12 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
             }
         }
         this.initialized = false;
+    }
+
+    setFocusToList() {
+        if (this.virtualScrollerViewChild) {
+            this.virtualScrollerViewChild.nativeElement.focus();
+        }
     }
 
     ngOnDestroy() {

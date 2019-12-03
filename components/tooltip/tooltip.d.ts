@@ -3,6 +3,7 @@ import { DomHandler } from '../dom/domhandler';
 import { Router } from '@angular/router';
 export declare class Tooltip implements AfterViewInit, OnDestroy {
     el: ElementRef;
+    domHandler: DomHandler;
     zone: NgZone;
     private router;
     tooltipPosition: string;

@@ -1,7 +1,5 @@
 import { OnInit, OnDestroy, AfterViewInit, AfterViewChecked, AfterContentInit, EventEmitter, ElementRef, TemplateRef, QueryList, NgZone, ChangeDetectorRef } from '@angular/core';
 import { Column, PrimeTemplate } from '../common/shared';
-import { DomHandler } from '../dom/domhandler';
-import { ObjectUtils } from '../utils/objectutils';
 import { SortMeta } from '../common/sortmeta';
 import { FilterMetadata } from '../common/filtermetadata';
 import { BlockableUI } from '../common/blockableui';
@@ -246,6 +244,7 @@ export declare class Table implements OnInit, AfterViewInit, AfterContentInit, B
     onRowDragLeave(event: any, rowElement: any): void;
     onRowDragEnd(event: any): void;
     onRowDrop(event: any, rowElement: any): void;
+    setFocusToList(): void;
     handleVirtualScroll(event: any): void;
     isEmpty(): boolean;
     getBlockableElement(): HTMLElement;
@@ -309,6 +308,7 @@ export declare class ScrollableView implements AfterViewInit, OnDestroy, AfterVi
     setVirtualScrollerHeight(): void;
     hasVerticalOverflow(): boolean;
     alignScrollBar(): void;
+    setFocusToList(): void;
     ngOnDestroy(): void;
 }
 export declare class SortableColumn implements OnInit, OnDestroy {

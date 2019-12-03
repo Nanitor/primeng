@@ -13,7 +13,7 @@
     "build-assets": "gulp build-assets",
     "build-exports": "gulp build-exports",
     "build-styles": "node-sass src/assets/components -o src/assets/components",
-    "build-redistribute": "npm run build-components && npm run build-assets && npm run build-styles"
+    "build-redistribute": "gulp clean && npm run build-components && npm run build-assets"
   },
   "repository": {
     "type": "git",
@@ -61,7 +61,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "moment": "2.19.3",
-     "node-sass": "^4.5.3",
+    "node-sass": "^4.5.3",
     "primeflex": "1.0.0",
     "primeicons": "2.0.0",
     "prismjs": "1.15.0",
