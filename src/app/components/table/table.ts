@@ -7,6 +7,7 @@ import { ObjectUtils } from '../utils/objectutils';
 import { SortMeta } from '../common/sortmeta';
 import { TableState } from '../common/tablestate';
 import { FilterMetadata } from '../common/filtermetadata';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Injectable } from '@angular/core';
 import { BlockableUI } from '../common/blockableui';
 import { Subject, Subscription } from 'rxjs';
@@ -88,7 +89,7 @@ export class TableService {
 
             <div class="ui-table-scrollable-wrapper" *ngIf="scrollable">
                <div class="ui-table-scrollable-view ui-table-frozen-view" *ngIf="frozenColumns||frozenBodyTemplate" [pScrollableView]="frozenColumns" [frozen]="true" [ngStyle]="{width: frozenWidth}" [scrollHeight]="scrollHeight"></div>
-               <div #scrollableView class="ui-table-scrollable-view" [pScrollableView]="columns" [frozen]="false" [scrollHeight]="scrollHeight" [ngStyle]="{left: frozenWidth, width: 'calc(100% - '+frozenWidth+')'}"></div>
+               <div #scrollableView class="ui-table-scrollable-view" [pScrollableView]="columns" [frozen]="false" [scrollHeight]="scrollHeight"></div>
             </div>
             
             <p-paginator [rows]="rows" [first]="first" [totalRecords]="totalRecords" [pageLinkSize]="pageLinks" styleClass="ui-paginator-bottom" [alwaysShow]="alwaysShowPaginator"
@@ -277,6 +278,8 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
     @ViewChild('reorderIndicatorDown', { static: false }) reorderIndicatorDownViewChild: ElementRef;
 
     @ViewChild('table', { static: false }) tableViewChild: ElementRef;
+
+    @ViewChild('scrollableView') scrollableView: ScrollableView;
 
     @ContentChildren(PrimeTemplate) templates: QueryList<PrimeTemplate>;
 
@@ -730,6 +733,9 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
 
     sortMultiple() {
         if(this.multiSortMeta) {
+            if(this.resetPageOnSort) {
+                this.first = 0;
+            }
             if (this.lazy) {
                 this.onLazyLoad.emit(this.createLazyLoadMetadata());
             }
