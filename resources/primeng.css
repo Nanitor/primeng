@@ -2598,72 +2598,6 @@ input[type=text]::-ms-clear {
     padding: 0;
 }
 
-.ui-growl {
-	position:fixed;
-	top: 20px;
-	right: 20px;
-	width: 20em;
-}
-
-.ui-growl-item-container {
-	position:relative;
-	margin:0 0 10px 0;
-	opacity:0.95;
-	filter:alpha(opacity=95);
-}
-
-.ui-growl-item {
-    position: relative;
-	display: block;
-	padding: .5em 1em;
-}
-
-.ui-growl-item p {
-	padding: 0;
-	margin: 0;
-}
-
-.ui-growl-icon-close {
-	position: absolute;
-	top: 4px;
-	right: 4px;
-	cursor: pointer;
-}
-
-.ui-growl-title {
-	font-weight: bold;
-	padding: 0 0 .5em 0;
-	display: block;
-}
-
-.ui-growl-image {
-    position: absolute;
-    display: inline-block;
-    left: .5em;
-    top: .25em;
-    padding: 0;
-    font-size: 2em;
-}
-
-.ui-growl-message {
-	padding: 0 0 .25em 0;
-    margin-left: 2.5em;
-}
-
-.ui-growl-message p {
-	font-weight: normal;
-}
-.ui-inplace .ui-inplace-display {
-    display: inline;
-    cursor: pointer;
-    border: 0 none;
-    padding: .25em;
-    font-weight: normal;
-}
-
-.ui-inplace .ui-inplace-content {
-    display: inline;
-}
 .ui-fluid .ui-inputgroup p-inputmask {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 auto;
@@ -3548,6 +3482,72 @@ input[type=text]::-ms-clear {
         width: 20%;
         margin-right: .25em;
     }
+}
+.ui-growl {
+	position:fixed;
+	top: 20px;
+	right: 20px;
+	width: 20em;
+}
+
+.ui-growl-item-container {
+	position:relative;
+	margin:0 0 10px 0;
+	opacity:0.95;
+	filter:alpha(opacity=95);
+}
+
+.ui-growl-item {
+    position: relative;
+	display: block;
+	padding: .5em 1em;
+}
+
+.ui-growl-item p {
+	padding: 0;
+	margin: 0;
+}
+
+.ui-growl-icon-close {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	cursor: pointer;
+}
+
+.ui-growl-title {
+	font-weight: bold;
+	padding: 0 0 .5em 0;
+	display: block;
+}
+
+.ui-growl-image {
+    position: absolute;
+    display: inline-block;
+    left: .5em;
+    top: .25em;
+    padding: 0;
+    font-size: 2em;
+}
+
+.ui-growl-message {
+	padding: 0 0 .25em 0;
+    margin-left: 2.5em;
+}
+
+.ui-growl-message p {
+	font-weight: normal;
+}
+.ui-inplace .ui-inplace-display {
+    display: inline;
+    cursor: pointer;
+    border: 0 none;
+    padding: .25em;
+    font-weight: normal;
+}
+
+.ui-inplace .ui-inplace-content {
+    display: inline;
 }
 .ui-organizationchart .ui-organizationchart-table {
     border-spacing: 0;

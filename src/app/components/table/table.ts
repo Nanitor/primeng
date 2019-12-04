@@ -2415,7 +2415,7 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
 
         this.scrollBodyViewChild.nativeElement.scrollTop = scrollposition;
 
-        let page = Math.floor((this.scrollBodyViewChild.nativeElement.scrollTop * pageCount) / (this.scrollBodyViewChild.nativeElement.scrollHeight)) + 1;
+        let page = Math.floor((this.scrollBodyViewChild.nativeElement.scrollTop * pageCount) / (this.scrollBodyViewChild.nativeElement.scrollHeight || 1)) + 1;
         this.dt.handleVirtualScroll({
             page: page,
             callback: () => {
