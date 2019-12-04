@@ -2148,7 +2148,7 @@ export class TableBody {
                     </ng-template>
                 </tbody>
             </table>
-            <div #virtualScroller class="ui-table-virtual-scroller" *ngIf="dt.virtualScroll" tabIndex="100"></div>
+            <div #virtualScroller class="ui-table-virtual-scroller" tabIndex="100"></div>
         </div>
         <div #scrollFooter *ngIf="dt.footerTemplate" class="ui-table-scrollable-footer ui-widget-header">
             <div #scrollFooterBox class="ui-table-scrollable-footer-box">
