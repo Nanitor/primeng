@@ -1339,11 +1339,6 @@ body .ui-tabview.ui-tabview-right .ui-tabview-nav {
   margin-right: -1px; }
   body .ui-tabview.ui-tabview-right .ui-tabview-nav li {
     margin-bottom: 2px; }
-body .ui-tabview .ui-tabview-panels {
-  background-color: #ffffff;
-  padding: 0.571em 1em;
-  border: 1px solid #c8c8c8;
-  color: #333333; }
   body .ui-tabview .ui-tabview-panels .ui-tabview-panel {
     padding: 0; }
 body .ui-toolbar {
