@@ -617,6 +617,11 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
             this.onLazyLoad.emit(this.createLazyLoadMetadata());
         }
         
+        this.onPage.emit({
+            first: this.first,
+            rows: this.rows
+        });
+
         this.firstChange.emit(this.first);
         this.rowsChange.emit(this.rows);
         this.tableService.onValueChange(this.value);
@@ -1848,8 +1853,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
     }
 
     handleVirtualScroll(event) {
-        this.first = (event.page - 1) * this.rows;
-        this.firstChange.emit(this.first);
         if (!this.paginator) {
             this.first = (event.page - 1) * this.rows;
         }
