@@ -79,7 +79,7 @@ export class TreeTableService {
 
             <div class="ui-treetable-scrollable-wrapper" *ngIf="scrollable">
                <div class="ui-treetable-scrollable-view ui-treetable-frozen-view" *ngIf="frozenColumns||frozenBodyTemplate" [ttScrollableView]="frozenColumns" [frozen]="true" [ngStyle]="{width: frozenWidth}" [scrollHeight]="scrollHeight"></div>
-               <div class="ui-treetable-scrollable-view" [ttScrollableView]="columns" [frozen]="false" [scrollHeight]="scrollHeight"></div>
+               <div #ttScrollableView class="ui-treetable-scrollable-view" [ttScrollableView]="columns" [frozen]="false" [scrollHeight]="scrollHeight"></div>
             </div>
 
             <p-paginator [rows]="rows" [first]="first" [totalRecords]="totalRecords" [pageLinkSize]="pageLinks" styleClass="ui-paginator-bottom" [alwaysShow]="alwaysShowPaginator"
@@ -230,6 +230,8 @@ export class TreeTable implements AfterContentInit, OnInit, OnDestroy, Blockable
     @ViewChild('reorderIndicatorDown', { static: false }) reorderIndicatorDownViewChild: ElementRef;
 
     @ViewChild('table', { static: false }) tableViewChild: ElementRef;
+
+    @ViewChild('ttScrollableView', { static: false }) ttScrollableView: TTScrollableView;
 
     @ContentChildren(PrimeTemplate) templates: QueryList<PrimeTemplate>;
 
@@ -1502,6 +1504,17 @@ export class TreeTable implements AfterContentInit, OnInit, OnDestroy, Blockable
         }
     }
 
+    public getScrollPosition() {
+        return this.ttScrollableView ? this.ttScrollableView.getScrollPosition() : 0;
+    }
+
+    public setScrollPosition(scrollPosition) {
+        const scrollableViewComponent = this.ttScrollableView;
+        if (scrollableViewComponent) {
+            scrollableViewComponent.setScrollPosition(scrollPosition);
+        }
+    }
+
     updateEditingCell(cell) {
         this.editingCell = cell;
         this.bindDocumentEditListener();
@@ -1805,6 +1818,14 @@ export class TTScrollableView implements AfterViewInit, OnDestroy, AfterViewChec
                 });
             }
         }
+    }
+
+    getScrollPosition() {
+        return this.scrollBodyViewChild.nativeElement.scrollTop;
+    }
+
+    setScrollPosition(scrollposition) {
+        this.scrollBodyViewChild.nativeElement.scrollTop = scrollposition;
     }
 
     setScrollHeight() {

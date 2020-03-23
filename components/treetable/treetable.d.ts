@@ -94,6 +94,7 @@ export declare class TreeTable implements AfterContentInit, OnInit, OnDestroy, B
     reorderIndicatorUpViewChild: ElementRef;
     reorderIndicatorDownViewChild: ElementRef;
     tableViewChild: ElementRef;
+    ttScrollableView: TTScrollableView;
     templates: QueryList<PrimeTemplate>;
     _value: TreeNode[];
     serializedValue: any[];
@@ -194,6 +195,8 @@ export declare class TreeTable implements AfterContentInit, OnInit, OnDestroy, B
     isNodeLeaf(node: any): boolean;
     hasFilter(): boolean;
     reset(): void;
+    getScrollPosition(): any;
+    setScrollPosition(scrollPosition: any): void;
     updateEditingCell(cell: any): void;
     isEditingCellValid(): boolean;
     bindDocumentEditListener(): void;
@@ -238,6 +241,8 @@ export declare class TTScrollableView implements AfterViewInit, OnDestroy, After
     onHeaderScroll(event: any): void;
     onFooterScroll(event: any): void;
     onBodyScroll(event: any): void;
+    getScrollPosition(): any;
+    setScrollPosition(scrollposition: any): void;
     setScrollHeight(): void;
     setVirtualScrollerHeight(): void;
     hasVerticalOverflow(): boolean;
