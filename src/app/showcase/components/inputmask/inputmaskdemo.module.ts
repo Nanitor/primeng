@@ -3,9 +3,9 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {InputMaskDemo} from './inputmaskdemo';
 import {InputMaskDemoRoutingModule} from './inputmaskdemo-routing.module';
-import {InputMaskModule} from 'primeng/inputmask';
-import {TabViewModule} from 'primeng/tabview';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {InputMaskModule} from 'primeng_atretiak/inputmask';
+import {TabViewModule} from 'primeng_atretiak/tabview';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

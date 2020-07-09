@@ -1,11 +1,11 @@
 import { NgModule, Component, ElementRef, Input, Output, EventEmitter, AfterContentInit, ContentChildren, ContentChild, QueryList, TemplateRef,forwardRef, ChangeDetectorRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SelectItem } from 'primeng/api';
-import { SharedModule, PrimeTemplate, Footer, Header } from 'primeng/api';
-import { DomHandler } from 'primeng/dom';
-import { ObjectUtils } from 'primeng/utils';
+import { SelectItem } from 'primeng_atretiak/api';
+import { SharedModule, PrimeTemplate, Footer, Header } from 'primeng_atretiak/api';
+import { DomHandler } from 'primeng_atretiak/dom';
+import { ObjectUtils } from 'primeng_atretiak/utils';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { FilterUtils } from 'primeng/utils';
+import { FilterUtils } from 'primeng_atretiak/utils';
 
 export const LISTBOX_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,

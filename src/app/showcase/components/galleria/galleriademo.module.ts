@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {GalleriaDemoRoutingModule} from './galleriademo-routing.module';
-import {GalleriaModule} from 'primeng/galleria';
-import {TabViewModule} from 'primeng/tabview';
-import {ButtonModule} from 'primeng/button';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {GalleriaModule} from 'primeng_atretiak/galleria';
+import {TabViewModule} from 'primeng_atretiak/tabview';
+import {ButtonModule} from 'primeng_atretiak/button';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 import {GalleriaDemo} from './galleriademo';
 import {GalleriaProgrammaticDemo} from './galleriaprogrammaticdemo';

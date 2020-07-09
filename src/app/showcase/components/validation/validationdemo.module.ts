@@ -3,16 +3,16 @@ import {CommonModule} from '@angular/common';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {ValidationDemo} from './validationdemo';
 import {ValidationDemoRoutingModule} from './validationdemo-routing.module';
-import {ToastModule} from 'primeng/toast';
-import {MessageModule} from 'primeng/message';
-import {PanelModule} from 'primeng/panel';
-import {DropdownModule} from 'primeng/dropdown';
-import {InputTextModule} from 'primeng/inputtext';
-import {InputTextareaModule} from 'primeng/inputtextarea';
-import {AutoCompleteModule} from 'primeng/autocomplete';
-import {ButtonModule} from 'primeng/button';
-import {TabViewModule} from 'primeng/tabview';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {ToastModule} from 'primeng_atretiak/toast';
+import {MessageModule} from 'primeng_atretiak/message';
+import {PanelModule} from 'primeng_atretiak/panel';
+import {DropdownModule} from 'primeng_atretiak/dropdown';
+import {InputTextModule} from 'primeng_atretiak/inputtext';
+import {InputTextareaModule} from 'primeng_atretiak/inputtextarea';
+import {AutoCompleteModule} from 'primeng_atretiak/autocomplete';
+import {ButtonModule} from 'primeng_atretiak/button';
+import {TabViewModule} from 'primeng_atretiak/tabview';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

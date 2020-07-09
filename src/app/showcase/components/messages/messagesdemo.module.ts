@@ -2,12 +2,12 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MessagesDemo} from './messagesdemo';
 import {MessagesDemoRoutingModule} from './messagesdemo-routing.module';
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
-import {InputTextModule} from 'primeng/inputtext';
-import {ButtonModule} from 'primeng/button';
-import {TabViewModule} from 'primeng/tabview';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {MessagesModule} from 'primeng_atretiak/messages';
+import {MessageModule} from 'primeng_atretiak/message';
+import {InputTextModule} from 'primeng_atretiak/inputtext';
+import {ButtonModule} from 'primeng_atretiak/button';
+import {TabViewModule} from 'primeng_atretiak/tabview';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

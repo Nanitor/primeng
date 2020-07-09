@@ -1,4 +1,4 @@
-import {SelectItem} from 'primeng/api';
+import {SelectItem} from 'primeng_atretiak/api';
 
 export class ObjectUtils {
 

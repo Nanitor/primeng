@@ -3,12 +3,12 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {InputGroupDemo} from './inputgroupdemo';
 import {InputGroupDemoRoutingModule} from './inputgroupdemo-routing.module';
-import {InputTextModule} from 'primeng/inputtext';
-import {CheckboxModule} from 'primeng/checkbox';
-import {RadioButtonModule} from 'primeng/radiobutton';
-import {ButtonModule} from 'primeng/button';
-import {TabViewModule} from 'primeng/tabview';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {InputTextModule} from 'primeng_atretiak/inputtext';
+import {CheckboxModule} from 'primeng_atretiak/checkbox';
+import {RadioButtonModule} from 'primeng_atretiak/radiobutton';
+import {ButtonModule} from 'primeng_atretiak/button';
+import {TabViewModule} from 'primeng_atretiak/tabview';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

@@ -1,11 +1,11 @@
 import {NgModule,Component,ViewChild,ElementRef,AfterViewChecked,AfterContentInit,OnDestroy,Input,Output,EventEmitter,ContentChildren,QueryList,TemplateRef,Renderer2,forwardRef,ChangeDetectorRef,IterableDiffers,ChangeDetectionStrategy} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {trigger,state,style,transition,animate,AnimationEvent} from '@angular/animations';
-import {InputTextModule} from 'primeng/inputtext';
-import {ButtonModule} from 'primeng/button';
-import {SharedModule,PrimeTemplate} from 'primeng/api';
-import {DomHandler} from 'primeng/dom';
-import {ObjectUtils, UniqueComponentId} from 'primeng/utils';
+import {InputTextModule} from 'primeng_atretiak/inputtext';
+import {ButtonModule} from 'primeng_atretiak/button';
+import {SharedModule,PrimeTemplate} from 'primeng_atretiak/api';
+import {DomHandler} from 'primeng_atretiak/dom';
+import {ObjectUtils, UniqueComponentId} from 'primeng_atretiak/utils';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
 export const AUTOCOMPLETE_VALUE_ACCESSOR: any = {

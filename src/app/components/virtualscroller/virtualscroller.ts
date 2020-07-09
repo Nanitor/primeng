@@ -1,8 +1,8 @@
 import {NgModule,Component,ElementRef,AfterContentInit,Input,Output,ViewChild,EventEmitter,ContentChild,ContentChildren,QueryList,TemplateRef,ChangeDetectionStrategy,OnChanges,SimpleChanges} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Header,Footer,PrimeTemplate,SharedModule} from 'primeng/api';
+import {Header,Footer,PrimeTemplate,SharedModule} from 'primeng_atretiak/api';
 import {ScrollingModule,CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
-import {BlockableUI} from 'primeng/api';
+import {BlockableUI} from 'primeng_atretiak/api';
 
 @Component({
     selector: 'p-virtualScroller',

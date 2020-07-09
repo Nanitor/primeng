@@ -1,12 +1,12 @@
 import {NgModule,Component,ElementRef,OnDestroy,Input,Output,EventEmitter,Renderer2,ChangeDetectorRef,ViewChild,ChangeDetectionStrategy} from '@angular/core';
 import {trigger,state,style,transition,animate,AnimationEvent} from '@angular/animations';
 import {CommonModule} from '@angular/common';
-import {DomHandler} from 'primeng/dom';
-import {MenuItem} from 'primeng/api';
-import {ButtonModule} from 'primeng/button';
+import {DomHandler} from 'primeng_atretiak/dom';
+import {MenuItem} from 'primeng_atretiak/api';
+import {ButtonModule} from 'primeng_atretiak/button';
 import {Router} from '@angular/router';
 import {RouterModule} from '@angular/router';
-import { UniqueComponentId } from 'primeng/utils';
+import { UniqueComponentId } from 'primeng_atretiak/utils';
 
 @Component({
     selector: 'p-splitButton',

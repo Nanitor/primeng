@@ -3,13 +3,13 @@ import {NgModule,Component,ElementRef,OnInit,AfterViewInit,AfterContentInit,Afte
         QueryList,ViewChild,TemplateRef,forwardRef,ChangeDetectorRef,NgZone,ViewRef,ChangeDetectionStrategy} from '@angular/core';
 import {trigger,state,style,transition,animate,AnimationEvent} from '@angular/animations';
 import {CommonModule} from '@angular/common';
-import {SelectItem} from 'primeng/api';
-import {SharedModule,PrimeTemplate} from 'primeng/api';
-import {DomHandler} from 'primeng/dom';
-import {ObjectUtils} from 'primeng/utils';
+import {SelectItem} from 'primeng_atretiak/api';
+import {SharedModule,PrimeTemplate} from 'primeng_atretiak/api';
+import {DomHandler} from 'primeng_atretiak/dom';
+import {ObjectUtils} from 'primeng_atretiak/utils';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
-import { FilterUtils } from 'primeng/utils';
-import {TooltipModule} from 'primeng/tooltip';
+import { FilterUtils } from 'primeng_atretiak/utils';
+import {TooltipModule} from 'primeng_atretiak/tooltip';
 
 export const DROPDOWN_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,

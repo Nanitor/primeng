@@ -2,11 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AccordionDemo} from './accordiondemo';
 import {AccordionDemoRoutingModule} from './accordiondemo-routing.module';
-import {AccordionModule} from 'primeng/accordion';
-import {ButtonModule} from 'primeng/button';
-import {TabViewModule} from 'primeng/tabview';
-import {ToastModule} from 'primeng/toast';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {AccordionModule} from 'primeng_atretiak/accordion';
+import {ButtonModule} from 'primeng_atretiak/button';
+import {TabViewModule} from 'primeng_atretiak/tabview';
+import {ToastModule} from 'primeng_atretiak/toast';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

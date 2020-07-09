@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { DialogModule } from 'primeng/dialog';
-import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
-import { AccordionModule } from 'primeng/accordion';
-import { TabViewModule } from 'primeng/tabview';
-import { CodeHighlighterModule } from 'primeng/codehighlighter';
+import { DialogModule } from 'primeng_atretiak/dialog';
+import { InputTextModule } from 'primeng_atretiak/inputtext';
+import { ButtonModule } from 'primeng_atretiak/button';
+import { AccordionModule } from 'primeng_atretiak/accordion';
+import { TabViewModule } from 'primeng_atretiak/tabview';
+import { CodeHighlighterModule } from 'primeng_atretiak/codehighlighter';
 import { FocusTrapDemoRoutingModule } from './focustrapdemo-routing.module';
 import { FocusTrapDemo } from './focustrapdemo';
-import { AutoCompleteModule } from 'primeng/autocomplete';
-import { CalendarModule } from 'primeng/calendar';
-import { MultiSelectModule } from 'primeng/multiselect';
-import { DropdownModule } from 'primeng/dropdown';
-import { EditorModule } from 'primeng/editor';
-import { FocusTrapModule } from 'primeng/focustrap';
+import { AutoCompleteModule } from 'primeng_atretiak/autocomplete';
+import { CalendarModule } from 'primeng_atretiak/calendar';
+import { MultiSelectModule } from 'primeng_atretiak/multiselect';
+import { DropdownModule } from 'primeng_atretiak/dropdown';
+import { EditorModule } from 'primeng_atretiak/editor';
+import { FocusTrapModule } from 'primeng_atretiak/focustrap';
 
 @NgModule({
 	imports: [

@@ -2,10 +2,10 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CardDemo} from './carddemo';
 import {CardDemoRoutingModule} from './carddemo-routing.module';
-import {CardModule} from 'primeng/card';
-import {TabViewModule} from 'primeng/tabview';
-import {ButtonModule} from 'primeng/button';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {CardModule} from 'primeng_atretiak/card';
+import {TabViewModule} from 'primeng_atretiak/tabview';
+import {ButtonModule} from 'primeng_atretiak/button';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

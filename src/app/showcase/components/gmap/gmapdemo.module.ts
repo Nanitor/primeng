@@ -3,14 +3,14 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {GMapDemo} from './gmapdemo';
 import {GMapDemoRoutingModule} from './gmapdemo-routing.module';
-import {GMapModule} from 'primeng/gmap';
-import {ToastModule} from 'primeng/toast';
-import {CheckboxModule} from 'primeng/checkbox';
-import {DialogModule} from 'primeng/dialog';
-import {InputTextModule} from 'primeng/inputtext';
-import {ButtonModule} from 'primeng/button';
-import {TabViewModule} from 'primeng/tabview';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {GMapModule} from 'primeng_atretiak/gmap';
+import {ToastModule} from 'primeng_atretiak/toast';
+import {CheckboxModule} from 'primeng_atretiak/checkbox';
+import {DialogModule} from 'primeng_atretiak/dialog';
+import {InputTextModule} from 'primeng_atretiak/inputtext';
+import {ButtonModule} from 'primeng_atretiak/button';
+import {TabViewModule} from 'primeng_atretiak/tabview';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../../components/domain/car';
 import { CarService } from '../../service/carservice';
-import { MenuItem } from 'primeng/api';
-import {MessageService} from 'primeng/api';
+import { MenuItem } from 'primeng_atretiak/api';
+import {MessageService} from 'primeng_atretiak/api';
 
 @Component({
     templateUrl: './tablecontextmenudemo.html',

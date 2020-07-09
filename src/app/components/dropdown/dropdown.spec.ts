@@ -5,7 +5,7 @@ import { Dropdown, DropdownItem} from './dropdown';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
-import { TooltipModule } from 'primeng/tooltip';
+import { TooltipModule } from 'primeng_atretiak/tooltip';
 
 @Component({
 	template: `

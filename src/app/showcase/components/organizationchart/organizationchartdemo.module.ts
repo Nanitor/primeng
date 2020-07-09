@@ -2,11 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {OrganizationChartDemo} from './organizationchartdemo';
 import {OrganizationChartDemoRoutingModule} from './organizationchartdemo-routing.module';
-import {OrganizationChartModule} from 'primeng/organizationchart';
-import {ToastModule} from 'primeng/toast';
-import {PanelModule} from 'primeng/panel';
-import {TabViewModule} from 'primeng/tabview';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {OrganizationChartModule} from 'primeng_atretiak/organizationchart';
+import {ToastModule} from 'primeng_atretiak/toast';
+import {PanelModule} from 'primeng_atretiak/panel';
+import {TabViewModule} from 'primeng_atretiak/tabview';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MenuModelDemo} from './menumodeldemo';
 import {MenuModelDemoRoutingModule} from './menumodeldemo-routing.module';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

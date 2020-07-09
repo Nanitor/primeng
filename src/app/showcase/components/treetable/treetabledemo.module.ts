@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TreeTableDemo } from './treetabledemo';
 import { TreeTableDemoRoutingModule } from './treetabledemo-routing.module';
-import { TreeTableModule } from 'primeng/treetable';
+import { TreeTableModule } from 'primeng_atretiak/treetable';
 import { TreeTablePageDemo } from './treetablepagedemo';
 import { TreeTableSortDemo } from './treetablesortdemo';
 import { TreeTableSelectionDemo } from './treetableselectiondemo';
@@ -20,14 +20,14 @@ import { TreeTableColResizeDemo } from './treetablecolresizedemo';
 import { TreeTableReorderDemo } from './treetablereorderdemo';
 import { TreeTableEditDemo } from './treetableeditdemo';
 import { TreeTableFilterDemo } from './treetablefilterdemo';
-import { ToastModule } from 'primeng/toast';
-import { DialogModule } from 'primeng/dialog';
-import { ButtonModule } from 'primeng/button';
-import { TabViewModule } from 'primeng/tabview';
-import { MultiSelectModule } from 'primeng/multiselect';
-import { InputTextModule } from 'primeng/inputtext';
-import { ContextMenuModule } from 'primeng/contextmenu';
-import { CodeHighlighterModule } from 'primeng/codehighlighter';
+import { ToastModule } from 'primeng_atretiak/toast';
+import { DialogModule } from 'primeng_atretiak/dialog';
+import { ButtonModule } from 'primeng_atretiak/button';
+import { TabViewModule } from 'primeng_atretiak/tabview';
+import { MultiSelectModule } from 'primeng_atretiak/multiselect';
+import { InputTextModule } from 'primeng_atretiak/inputtext';
+import { ContextMenuModule } from 'primeng_atretiak/contextmenu';
+import { CodeHighlighterModule } from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

@@ -3,15 +3,15 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {DataViewDemo} from './dataviewdemo';
 import {DataViewDemoRoutingModule} from './dataviewdemo-routing.module';
-import {DataViewModule} from 'primeng/dataview';
-import {PanelModule} from 'primeng/panel';
-import {InputTextModule} from 'primeng/inputtext';
-import {ButtonModule} from 'primeng/button';
-import {DialogModule} from 'primeng/dialog';
-import {DropdownModule} from 'primeng/dropdown';
-import {TabViewModule} from 'primeng/tabview';
+import {DataViewModule} from 'primeng_atretiak/dataview';
+import {PanelModule} from 'primeng_atretiak/panel';
+import {InputTextModule} from 'primeng_atretiak/inputtext';
+import {ButtonModule} from 'primeng_atretiak/button';
+import {DialogModule} from 'primeng_atretiak/dialog';
+import {DropdownModule} from 'primeng_atretiak/dropdown';
+import {TabViewModule} from 'primeng_atretiak/tabview';
 
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

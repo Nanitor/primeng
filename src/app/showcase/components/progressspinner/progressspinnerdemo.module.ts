@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ProgressSpinnerDemo} from './progressspinnerdemo';
 import {ProgressSpinnerDemoRoutingModule} from './progressspinnerdemo-routing.module';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
-import {TabViewModule} from 'primeng/tabview';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {ProgressSpinnerModule} from 'primeng_atretiak/progressspinner';
+import {TabViewModule} from 'primeng_atretiak/tabview';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

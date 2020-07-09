@@ -1,10 +1,10 @@
 import {NgModule,Component,ElementRef,AfterViewChecked,AfterContentInit,Input,Output,ContentChildren,QueryList,TemplateRef,EventEmitter,ViewChild,ChangeDetectionStrategy} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ButtonModule} from 'primeng/button';
-import {SharedModule,PrimeTemplate} from 'primeng/api';
-import {DomHandler} from 'primeng/dom';
-import {ObjectUtils} from 'primeng/utils';
-import { FilterUtils } from 'primeng/utils';
+import {ButtonModule} from 'primeng_atretiak/button';
+import {SharedModule,PrimeTemplate} from 'primeng_atretiak/api';
+import {DomHandler} from 'primeng_atretiak/dom';
+import {ObjectUtils} from 'primeng_atretiak/utils';
+import { FilterUtils } from 'primeng_atretiak/utils';
 
 @Component({
     selector: 'p-orderList',

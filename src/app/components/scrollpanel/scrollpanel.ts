@@ -1,6 +1,6 @@
 import { NgModule, Component, Input, AfterViewInit, OnDestroy, ElementRef, NgZone, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DomHandler } from 'primeng/dom';
+import { DomHandler } from 'primeng_atretiak/dom';
 
 @Component({
     selector: 'p-scrollPanel',

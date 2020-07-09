@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {SelectItem} from 'primeng/api';
+import {SelectItem} from 'primeng_atretiak/api';
 
 @Component({
     templateUrl: './selectbuttondemo.html'

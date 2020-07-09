@@ -1,7 +1,7 @@
 import {Component,OnInit} from '@angular/core';
 import {Validators,FormControl,FormGroup,FormBuilder} from '@angular/forms';
-import {SelectItem} from 'primeng/api';
-import {MessageService} from 'primeng/api';
+import {SelectItem} from 'primeng_atretiak/api';
+import {MessageService} from 'primeng_atretiak/api';
 
 @Component({
     templateUrl: './validationdemo.html',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../../components/domain/car';
 import { CarService } from '../../service/carservice';
-import { SelectItem } from 'primeng/api';
+import { SelectItem } from 'primeng_atretiak/api';
 import { FilterUtils } from '../../../components/utils/filterutils';
 
 @Component({

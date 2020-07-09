@@ -2,11 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MenubarDemo} from './menubardemo';
 import {MenubarDemoRoutingModule} from './menubardemo-routing.module';
-import {MenubarModule} from 'primeng/menubar';
-import {InputTextModule} from 'primeng/inputtext';
-import {ButtonModule} from 'primeng/button';
-import {TabViewModule} from 'primeng/tabview';
-import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {MenubarModule} from 'primeng_atretiak/menubar';
+import {InputTextModule} from 'primeng_atretiak/inputtext';
+import {ButtonModule} from 'primeng_atretiak/button';
+import {TabViewModule} from 'primeng_atretiak/tabview';
+import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
 
 @NgModule({
 	imports: [

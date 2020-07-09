@@ -1,6 +1,6 @@
 import {Component,OnInit,ViewEncapsulation} from '@angular/core';
-import {MenuItem} from 'primeng/api';
-import {MessageService} from 'primeng/api';
+import {MenuItem} from 'primeng_atretiak/api';
+import {MessageService} from 'primeng_atretiak/api';
 
 @Component({
     templateUrl: './stepsdemo.html',
