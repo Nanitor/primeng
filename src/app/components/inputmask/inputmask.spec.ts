@@ -46,7 +46,7 @@ describe('InputMask', () => {
 
     it('should change style styleClass placeholder inputId size tabindex title and autoFocus', () => {
         inputmask.mask = "99-999999";
-        inputmask.style = { 'primeng': 'rocks' }
+        inputmask.style = { 'height': '300px' }
         inputmask.styleClass = "PrimengRocks";
         inputmask.placeholder = "GiveMeANumber";
         inputmask.inputId = "primeng";
@@ -59,7 +59,7 @@ describe('InputMask', () => {
 
         const inputMaskEl = fixture.debugElement.query(By.css('input'));
         expect(inputMaskEl.nativeElement).toBeTruthy();
-        expect(inputMaskEl.nativeElement.style['primeng']).toEqual("rocks");
+        expect(inputMaskEl.nativeElement.style['height']).toEqual("300px");
         expect(inputMaskEl.nativeElement.className).toContain("PrimengRocks");
         expect(inputMaskEl.nativeElement.placeholder).toEqual("GiveMeANumber");
         expect(inputMaskEl.nativeElement.id).toEqual("primeng");
@@ -239,17 +239,6 @@ describe('InputMask', () => {
         inputMaskEl = fixture.debugElement.query(By.css('input'));
         expect(inputMaskEl.parent.nativeElement.className).toContain("ui-inputwrapper-focus");
         expect(onInputFocusSpy).toHaveBeenCalled();
-    });
-
-    it('should focus on input (manually)', () => {
-        inputmask.mask = "99-999999";
-        fixture.detectChanges();
-
-        inputmask.focus();
-        fixture.detectChanges();
-
-        let inputMaskEl = fixture.debugElement.query(By.css('input'));
-        expect(inputMaskEl.parent.nativeElement.className).toContain("ui-inputwrapper-focus");
     });
 
     it('should disabled with setDisabledState', () => {
