@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, ElementRef, ViewChild, AfterContentInit, TemplateRef, ContentChildren, QueryList, NgModule, NgZone, EventEmitter, Output, ContentChild } from '@angular/core';
-import { PrimeTemplate, SharedModule, Header, Footer } from '../common/shared';
+import { Component, Input, ElementRef, ViewChild, AfterContentInit, TemplateRef, ContentChildren, QueryList, NgModule, NgZone, EventEmitter, Output, ContentChild, ChangeDetectionStrategy } from '@angular/core';
+import { PrimeTemplate, SharedModule, Header, Footer } from 'primeng/api';
 import { CommonModule } from '@angular/common';
-import { UniqueComponentId } from '../utils/uniquecomponentid';
+import { UniqueComponentId } from 'primeng/utils';
+
 @Component({
 	selector: 'p-carousel',
 	template: `
@@ -11,7 +12,7 @@ import { UniqueComponentId } from '../utils/uniquecomponentid';
 			</div>
 			<div [class]="contentClasses()">
 				<div class="ui-carousel-container">
-					<button [ngClass]="{'ui-carousel-prev ui-button ui-widget ui-state-default ui-corner-all':true, 'ui-state-disabled': _page === 0  && !circular}" [disabled]="_page === 0  && !circular" (click)="navBackward($event)">
+					<button [ngClass]="{'ui-carousel-prev ui-button ui-widget ui-state-default ui-corner-all':true, 'ui-state-disabled': isBackwardNavDisabled()}" [disabled]="isBackwardNavDisabled()" (click)="navBackward($event)">
 						<span [ngClass]="{'ui-carousel-prev-icon pi': true, 'pi-chevron-left': !isVertical(), 'pi-chevron-up': isVertical()}"></span>
 					</button>
 					<div class="ui-carousel-items-content" [ngStyle]="{'height': isVertical() ? verticalViewPortHeight : 'auto'}">
@@ -33,7 +34,7 @@ import { UniqueComponentId } from '../utils/uniquecomponentid';
 							</div>
 						</div>
 					</div>
-					<button [ngClass]="{'ui-carousel-next ui-button ui-widget ui-state-default ui-corner-all': true, 'ui-state-disabled': (_page === totalDots()-1 && !circular)}" [disabled]="_page === totalDots()-1 && !circular" (click)="navForward($event)">
+					<button [ngClass]="{'ui-carousel-next ui-button ui-widget ui-state-default ui-corner-all': true, 'ui-state-disabled': isForwardNavDisabled()}" [disabled]="isForwardNavDisabled()" (click)="navForward($event)">
 						<span [ngClass]="{'ui-carousel-next-icon pi': true, 'pi-chevron-right': !isVertical(), 'pi-chevron-down': isVertical()}"></span>
 					</button>
 				</div>
@@ -49,7 +50,8 @@ import { UniqueComponentId } from '../utils/uniquecomponentid';
 				<ng-content select="p-footer"></ng-content>
 			</div>
 		</div>
-	`
+    `,
+    changeDetection: ChangeDetectionStrategy.Default
 })
 export class Carousel implements AfterContentInit {
 
@@ -118,11 +120,11 @@ export class Carousel implements AfterContentInit {
 	
     @Output() onPage: EventEmitter<any> = new EventEmitter();
 
-	@ViewChild('itemsContainer', { static: true }) itemsContainer: ElementRef;
+	@ViewChild('itemsContainer') itemsContainer: ElementRef;
 
-	@ContentChild(Header, { static: false }) headerFacet;
+	@ContentChild(Header) headerFacet;
 
-    @ContentChild(Footer, { static: false }) footerFacet;
+    @ContentChild(Footer) footerFacet;
 
 	@ContentChildren(PrimeTemplate) templates: QueryList<any>;
 
@@ -175,6 +177,8 @@ export class Carousel implements AfterContentInit {
 	interval: any;
 
 	isCreated: boolean;
+
+	swipeThreshold: number = 20;
 
 	public itemTemplate: TemplateRef<any>;
 
@@ -257,7 +261,10 @@ export class Carousel implements AfterContentInit {
 			this.prevState.numVisible = this._numVisible;
 			this.prevState.value = this._value;
 
-			this.itemsContainer.nativeElement.style.transform = this.isVertical() ? `translate3d(0, ${totalShiftedItems * (100/ this._numVisible)}%, 0)` : `translate3d(${totalShiftedItems * (100/ this._numVisible)}%, 0, 0)`;
+			if (this.totalDots() > 0 && this.itemsContainer && this.itemsContainer.nativeElement) {
+				this.itemsContainer.nativeElement.style.transform = this.isVertical() ? `translate3d(0, ${totalShiftedItems * (100/ this._numVisible)}%, 0)` : `translate3d(${totalShiftedItems * (100/ this._numVisible)}%, 0, 0)`;
+			}
+			
 			this.isCreated = true;
 
 			if (this.autoplayInterval && this.isAutoplay()) {
@@ -393,12 +400,15 @@ export class Carousel implements AfterContentInit {
 	totalDots() {
 		return this.value ? Math.ceil((this.value.length - this._numVisible) / this._numScroll) + 1 : 0;
 	}
+
 	totalDotsArray() {
-		return Array(this.value ? Math.ceil((this.value.length - this._numVisible) / this._numScroll) + 1 : 0).fill(0);;
+		const totalDots = this.totalDots();
+		return totalDots <= 0 ? [] : Array(totalDots).fill(0);
 	}
 
 	containerClass() {
-		return {'ui-carousel ui-widget':true, 
+		return {
+			'ui-carousel ui-widget':true, 
 			'ui-carousel-vertical': this.isVertical(),
 			'ui-carousel-horizontal': !this.isVertical()
 		};
@@ -424,8 +434,20 @@ export class Carousel implements AfterContentInit {
 		return this.autoplayInterval && this.allowAutoplay;
 	}
 
+	isForwardNavDisabled() {
+		return this.isEmpty() || (this._page >= (this.totalDots() - 1) && !this.isCircular());
+	}
+
+	isBackwardNavDisabled() {
+		return this.isEmpty() || (this._page <= 0  && !this.isCircular());
+	}
+
+	isEmpty() {
+		return !this.value || this.value.length === 0;
+	}
+
 	navForward(e,index?) {
-		if (this.circular || this._page < (this.totalDots() - 1)) {
+		if (this.isCircular() || this._page < (this.totalDots() - 1)) {
 			this.step(-1, index);
 		}
 
@@ -440,7 +462,7 @@ export class Carousel implements AfterContentInit {
 	}
 
 	navBackward(e,index?) {
-		if (this.circular || this._page !== 0) {
+		if (this.isCircular() || this._page !== 0) {
 			this.step(1, index);
 		}
 
@@ -521,11 +543,13 @@ export class Carousel implements AfterContentInit {
 
 	startAutoplay() {
 		this.interval = setInterval(() => {
-			if (this.page === (this.totalDots() - 1)) {
-				this.step(-1, 0);
-			}
-			else {
-				this.step(-1, this.page + 1);
+			if (this.totalDots() > 0) {
+				if (this.page === (this.totalDots() - 1)) {
+					this.step(-1, 0);
+				}
+				else {
+					this.step(-1, this.page + 1);
+				}
 			}
 		}, 
 		this.autoplayInterval);
@@ -573,11 +597,14 @@ export class Carousel implements AfterContentInit {
 	}
 
 	changePageOnTouch(e, diff) {
-		if (diff < 0) {
-			this.navForward(e);
-		}
-		else {
-			this.navBackward(e);
+		if (Math.abs(diff) > this.swipeThreshold) {
+			if (diff < 0) {
+				this.navForward(e);
+			}
+			else {
+				this.navBackward(e);
+
+			}
 		}
 	}
 
