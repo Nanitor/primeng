@@ -55,13 +55,13 @@ describe('Slider', () => {
     });
 
     it('should change styles', () => {
-        slider.style = {'primeng':'rocks!'};
+        slider.style = {'height':'300px'};
         slider.styleClass = "Primeng ROCKS!";
         fixture.detectChanges();
 
         const sliderEl = fixture.debugElement.query(By.css('div')).nativeElement;
         expect(sliderEl.className).toContain("Primeng ROCKS!");
-        expect(sliderEl.style.primeng).toEqual("rocks!");
+        expect(sliderEl.style.height).toEqual("300px");
     });
 
     it('should change orientation', () => {
@@ -105,6 +105,8 @@ describe('Slider', () => {
     });
 
     it('should listen onChange', () => {
+        fixture.detectChanges();
+
         let value = 1;
         slider.onChange.subscribe(data => value = data.value);
         slider.updateValue(91);
@@ -114,6 +116,8 @@ describe('Slider', () => {
     });
 
     it('should change value with touch events (horizontal)', () => {
+        fixture.detectChanges();
+
         slider.updateValue(91);
         slider.handleValue = 91;
         fixture.detectChanges();
@@ -337,7 +341,8 @@ describe('Slider', () => {
     it('should select range', () => {
         slider.range = true;
         slider.handleValues = [20,80];
-        slider.values = 20;
+        slider.values = [20,80];
+        slider.style = {'width':'600px'};
         fixture.detectChanges();
 
         const sliderHandlers = fixture.debugElement.queryAll(By.css(".ui-slider-handle"));
@@ -359,7 +364,8 @@ describe('Slider', () => {
         slider.range = true;
         slider.step = 2;
         slider.handleValues = [20,80];
-        slider.values = 20;
+        slider.style = {'width':'600px'};
+        slider.values = [20,80];
         fixture.detectChanges();
 
         const sliderHandlers = fixture.debugElement.queryAll(By.css(".ui-slider-handle"));
@@ -381,7 +387,7 @@ describe('Slider', () => {
     it('should select range with min and max options', () => {
         slider.range = true;
         slider.handleValues = [20,80];
-        slider.values = 20;
+        slider.values = [20,80];
         slider.min = 19;
         slider.max = 81;
         fixture.detectChanges();
