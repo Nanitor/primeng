@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../../components/domain/car';
 import { CarService } from '../../service/carservice';
-import { SelectItem, FilterUtils } from '../../../components/common/api';
+import { SelectItem } from 'primeng/api';
+import { FilterUtils } from '../../../components/utils/filterutils';
 
 @Component({
     templateUrl: './tablefilterdemo.html'

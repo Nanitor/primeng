@@ -14,7 +14,7 @@
 </div>
 
 <div class="content-section documentation">
-    <p-tabView effect="fade">
+    <p-tabView>
         <p-tabPanel header="Documentation">
             <h3>Import</h3>
 <pre>
@@ -104,6 +104,12 @@ export class ModelComponent &#123;
                             <td>Name of the input element.</td>
                         </tr>
                         <tr>
+                            <td>ariaLabelledBy</td>
+                            <td>string</td>
+                            <td>null</td>
+                            <td>Establishes relationships between the component and label(s) where its value should be one or more element IDs.</td>
+                        </tr>
+                        <tr>
                             <td>disabled</td>
                             <td>boolean</td>
                             <td>false</td>
@@ -189,8 +195,10 @@ export class ModelComponent &#123;
 
         <p-tabPanel header="Source">
             <a href="https://github.com/primefaces/primeng/tree/master/src/app/showcase/components/inputswitch" class="btn-viewsource" target="_blank">
-                <i class="fa fa-github"></i>
                 <span>View on GitHub</span>
+            </a>
+            <a href="https://stackblitz.com/edit/primeng-inputswitch-demo" class="btn-viewsource" style="margin-left: .5em;" target="_blank">
+                <span>Edit in StackBlitz</span>
             </a>
 <pre>
 <code class="language-markup" pCode ngNonBindable>
@@ -212,6 +220,11 @@ export class InputSwitchDemo &#123;
 &#125;
 </code>
 </pre>
+        </p-tabPanel>
+        <p-tabPanel header="StackBlitz">
+            <ng-template pTemplate="content">
+                <iframe src="https://stackblitz.com/edit/primeng-inputswitch-demo?embed=1" style="width: 100%; height: 768px; border: none;"></iframe>
+            </ng-template>
         </p-tabPanel>
     </p-tabView>
 </div>
