@@ -74,7 +74,7 @@ describe('Checkbox', () => {
         checkbox.name = "primeng";
         checkbox.inputId = "primeng";
         checkbox.tabindex = 13;
-        checkbox.style = {'primeng': 'rocks'};
+        checkbox.style = {'height': '300px'};
         checkbox.styleClass = "Primeng Rocks!";
         checkbox.labelStyleClass = "Primeng ROCKS";
         fixture.detectChanges();
@@ -93,7 +93,7 @@ describe('Checkbox', () => {
         expect(input.id).toEqual("primeng");
         expect(input.tabIndex).toEqual(13);
         expect(containerEl.className).toContain('Primeng Rocks!');
-        expect(containerEl.style.primeng).toContain('rocks');
+        expect(containerEl.style.height).toContain('300px');
     });
 
     it('should uncheck when twice click', () => {
@@ -112,7 +112,7 @@ describe('Checkbox', () => {
     });
 
     it('should check with binary', () => {
-        checkbox.binary = "true";
+        checkbox.binary = true;
         fixture.detectChanges();
 
         const boxEl = fixture.nativeElement.querySelector('.ui-chkbox-box');
@@ -178,7 +178,7 @@ describe('Checkbox', () => {
     it('should call handleChange', () => {
         fixture.detectChanges();
         
-        checkbox.binary = "true";
+        checkbox.binary = true;
         const handleChangeSpy = spyOn(checkbox,"handleChange").and.callThrough();
         const input = fixture.nativeElement.querySelector('input');
         input.dispatchEvent(new Event('change'));
