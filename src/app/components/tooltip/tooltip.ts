@@ -1,7 +1,6 @@
-import { NgModule, Directive, ElementRef, AfterViewInit, OnDestroy, HostBinding, HostListener, Input, NgZone } from '@angular/core';
+import { NgModule, Directive, ElementRef, AfterViewInit, OnDestroy, Input, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DomHandler } from '../dom/domhandler';
-import { Router, NavigationStart } from '@angular/router';
+import { DomHandler } from 'primeng/dom';
 
 @Directive({
     selector: '[pTooltip]'
@@ -20,8 +19,6 @@ export class Tooltip implements AfterViewInit, OnDestroy {
 
     @Input() tooltipZIndex: string = 'auto';
 
-    @Input("tooltipDisabled") disabled: boolean;
-
     @Input() escape: boolean = true;
 
     @Input() showDelay: number;
@@ -29,6 +26,16 @@ export class Tooltip implements AfterViewInit, OnDestroy {
     @Input() hideDelay: number;
 
     @Input() life: number;
+
+    @Input("tooltipDisabled") get disabled(): boolean {
+        return this._disabled;
+    }
+    set disabled(val:boolean) {
+        this._disabled = val;
+        this.deactivate();
+    }
+
+    _disabled: boolean;
 
     container: any;
 
@@ -56,13 +63,7 @@ export class Tooltip implements AfterViewInit, OnDestroy {
 
     resizeListener: any;
 
-    constructor(public el: ElementRef, public domHandler: DomHandler, public zone: NgZone, private router: Router) {
-        router.events.subscribe((val) => {
-            if (val instanceof NavigationStart) {
-                this.deactivate();
-            }
-        });
-    }
+    constructor(public el: ElementRef, public zone: NgZone) { }
 
     ngAfterViewInit() {
         this.zone.runOutsideAngular(() => {
@@ -141,10 +142,13 @@ export class Tooltip implements AfterViewInit, OnDestroy {
         this._text = text;
         if (this.active) {
             if (this._text) {
-                if (this.container && this.container.offsetParent)
+                if (this.container && this.container.offsetParent) {
                     this.updateText();
-                else
+					this.align();
+				}
+                else {
                     this.show();
+                }
             }
             else {
                 this.hide();
@@ -153,6 +157,11 @@ export class Tooltip implements AfterViewInit, OnDestroy {
     }
 
     create() {
+        if (this.container) {
+            this.clearHideTimeout();
+            this.remove();
+        }
+
         this.container = document.createElement('div');
 
         let tooltipArrow = document.createElement('div');
@@ -276,7 +285,7 @@ export class Tooltip implements AfterViewInit, OnDestroy {
     }
 
     getHostOffset() {
-        if(this.appendTo === 'body' || this.appendTo === 'target') {
+        if (this.appendTo === 'body' || this.appendTo === 'target') {
             let offset = this.el.nativeElement.getBoundingClientRect();
             let targetLeft = offset.left + DomHandler.getWindowScrollLeft();
             let targetTop = offset.top + DomHandler.getWindowScrollTop();
