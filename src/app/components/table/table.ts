@@ -374,10 +374,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
 
     _sortOrder: number = 1;
 
-    virtualScrollTimer: any;
-    
-    virtualScrollCallback: Function;
-
     preventSelectionSetterPropagation: boolean;
 
     _selection: any;
@@ -526,10 +522,6 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
                     this.sortMultiple();
                 else if (this.hasFilter())       //sort already filters
                     this._filter();
-            }
-
-            if(this.virtualScroll && this.virtualScrollCallback) {
-                this.virtualScrollCallback();
             }
 
             this.tableService.onValueChange(simpleChange.value.currentValue);
@@ -1522,36 +1514,13 @@ export class Table implements OnInit, AfterViewInit, AfterContentInit, Blockable
         }
     }
 
+    // Nanitor function
     public getScrollPosition() {
-        return this.scrollableViewChild ? this.scrollableViewChild.getScrollPosition() : 0;
+        return this.scrollableViewChild.getScrollPosition() || 0;
     }
-
-    public setScrollPosition(scrollPosition: number) {
-        const scrollableViewComponent: ScrollableView = this.scrollableViewChild as ScrollableView;
-        if (scrollableViewComponent) {
-            scrollableViewComponent.setScrollPosition(scrollPosition);
-        }
-    }
-
-    public setFocusToList() {
-        if (this.scrollableViewChild) {
-            this.scrollableViewChild.setFocusToList();
-        }
-    }
-
-    public handleVirtualScroll(event) {
-        if (!this.paginator) {
-            this.first = (event.page - 1) * this.rows;
-        }
-        this.virtualScrollCallback = event.callback;
-        this.zone.run(() => {
-            if(this.virtualScrollTimer) {
-                clearTimeout(this.virtualScrollTimer);
-            }
-            this.virtualScrollTimer = setTimeout(() => {
-                this.onLazyLoad.emit(this.createLazyLoadMetadata());
-            }, this.virtualScrollDelay);
-        });
+    // Nanitor function
+    public setScrollPosition(options) {
+        this.scrollTo({top: options});
     }
 
     updateEditingCell(cell, data, field, index) {
@@ -2528,33 +2497,9 @@ export class ScrollableView implements AfterViewInit,OnDestroy,AfterViewChecked 
         }
     }
 
+    // Nanitor function
     public getScrollPosition() {
-        return this.scrollBodyViewChild.nativeElement.scrollTop;
-    }
-
-    public setScrollPosition(scrollposition: number) {
-        let pageHeight = this.dt.virtualRowHeight * this.dt.rows;
-        let virtualTableHeight = DomHandler.getOuterHeight(this.scrollableAlignerViewChild.nativeElement);
-        let pageCount = (virtualTableHeight / pageHeight)||1;
-        this.scrollBodyViewChild.nativeElement.scrollTop = scrollposition;
-        let page = Math.floor((this.scrollBodyViewChild.nativeElement.scrollTop * pageCount)
-            / (this.scrollBodyViewChild.nativeElement.scrollHeight || 1)) + 1;
-        this.dt.handleVirtualScroll({
-            page,
-            callback: () => {
-                this.scrollTableViewChild.nativeElement.style.top = ((page - 1) * pageHeight) + 'px';
-
-                if (this.frozenSiblingBody) {
-                    (this.frozenSiblingBody.children[0] as HTMLElement).style.top = this.scrollTableViewChild.nativeElement.style.top;
-                }
-            }
-        });
-    }
-
-    public setFocusToList() {
-        if (this.scrollableAlignerViewChild) {
-            this.scrollableAlignerViewChild.nativeElement.focus();
-        }
+        return this.scrollBodyViewChild.nativeElement.scrollTop || 0;
     }
 
     hasVerticalOverflow() {
@@ -2664,7 +2609,7 @@ export class SortableColumn implements OnInit, OnDestroy {
 @Component({
     selector: 'p-sortIcon',
     template: `
-        <i class="ui-sortable-column-icon pi pi-fw" [ngClass]="{'pi-sort-amount-up-alt': sortOrder === 1, 'pi-sort-amount-down': sortOrder === -1, 'pi-sort-alt': sortOrder === 0}"></i>
+        <i class="ui-sortable-column-icon pi pi-fw" [ngClass]="{'pi-sort-up': sortOrder === 1, 'pi-sort-down': sortOrder === -1, 'pi-sort': sortOrder === 0}"></i>
     `
 })
 export class SortIcon implements OnInit, OnDestroy {

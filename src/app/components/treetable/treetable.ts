@@ -253,8 +253,6 @@ export class TreeTable implements AfterContentInit, OnInit, OnDestroy, Blockable
 
     @ViewChild('scrollableView') scrollableViewChild;
 
-    @ViewChild('scrollableView') ttScrollableView: TTScrollableView;
-
     @ViewChild('scrollableFrozenView') scrollableFrozenViewChild;
 
     @ContentChildren(PrimeTemplate) templates: QueryList<PrimeTemplate>;
@@ -836,6 +834,15 @@ export class TreeTable implements AfterContentInit, OnInit, OnDestroy, Blockable
         if (this.scrollableFrozenViewChild) {
             this.scrollableFrozenViewChild.scrollTo(options);
         }
+    }
+
+    // Nanitor function
+    public getScrollPosition() {
+        return this.scrollableViewChild.getScrollPosition() || 0;
+    }
+    // Nanitor function
+    public setScrollPosition(options) {
+        this.scrollTo({top: options});
     }
 
     isEmpty() {
@@ -1588,17 +1595,6 @@ export class TreeTable implements AfterContentInit, OnInit, OnDestroy, Blockable
         }
     }
 
-    public getScrollPosition() {
-        return this.ttScrollableView ? this.ttScrollableView.getScrollPosition() : 0;
-    }
-
-    public setScrollPosition(scrollPosition) {
-        const scrollableViewComponent = this.ttScrollableView;
-        if (scrollableViewComponent) {
-            scrollableViewComponent.setScrollPosition(scrollPosition);
-        }
-    }
-
     updateEditingCell(cell) {
         this.editingCell = cell;
         this.bindDocumentEditListener();
@@ -1897,14 +1893,6 @@ export class TTScrollableView implements AfterViewInit, OnDestroy, AfterViewChec
         }
     }
 
-    getScrollPosition() {
-        return this.scrollBodyViewChild.nativeElement.scrollTop;
-    }
-
-    setScrollPosition(scrollposition) {
-        this.scrollBodyViewChild.nativeElement.scrollTop = scrollposition;
-    }
-
     scrollToVirtualIndex(index: number): void {
         if (this.virtualScrollBody) {
             this.virtualScrollBody.scrollToIndex(index);
@@ -1924,6 +1912,11 @@ export class TTScrollableView implements AfterViewInit, OnDestroy, AfterViewChec
                 this.scrollBodyViewChild.nativeElement.scrollTop = options.top;
             }
         }
+    }
+
+    // Nanitor function
+    public getScrollPosition() {
+        return this.scrollBodyViewChild.nativeElement.scrollTop || 0;
     }
 
     hasVerticalOverflow() {
@@ -2026,7 +2019,7 @@ export class TTSortableColumn implements OnInit, OnDestroy {
 @Component({
     selector: 'p-treeTableSortIcon',
     template: `
-        <i class="ui-sortable-column-icon pi pi-fw" [ngClass]="{'pi-sort-amount-up-alt': sortOrder === 1, 'pi-sort-amount-down': sortOrder === -1, 'pi-sort-alt': sortOrder === 0}"></i>
+        <i class="ui-sortable-column-icon pi pi-fw" [ngClass]="{'pi-sort-up': sortOrder === 1, 'pi-sort-down': sortOrder === -1, 'pi-sort': sortOrder === 0}"></i>
     `
 })
 export class TTSortIcon implements OnInit, OnDestroy {
