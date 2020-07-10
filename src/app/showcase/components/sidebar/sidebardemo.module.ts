@@ -3,10 +3,10 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {SidebarDemo} from './sidebardemo';
 import {SidebarDemoRoutingModule} from './sidebardemo-routing.module';
-import {SidebarModule} from 'primeng_atretiak/sidebar';
-import {ButtonModule} from 'primeng_atretiak/button';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {SidebarModule} from '@nanitor/primeng/sidebar';
+import {ButtonModule} from '@nanitor/primeng/button';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

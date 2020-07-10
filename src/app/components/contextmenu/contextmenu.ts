@@ -1,7 +1,7 @@
 import { NgModule,Component,ElementRef,AfterViewInit,OnDestroy,Input,Output,Renderer2,Inject,forwardRef,ViewChild,NgZone,EventEmitter,ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DomHandler } from 'primeng_atretiak/dom';
-import { MenuItem } from 'primeng_atretiak/api';
+import { DomHandler } from '@nanitor/primeng/dom';
+import { MenuItem } from '@nanitor/primeng/api';
 import { RouterModule } from '@angular/router';
 
 @Component({

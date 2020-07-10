@@ -2,9 +2,9 @@ import {NgModule,Component,ElementRef,OnDestroy,Input,Output,EventEmitter,Render
     ContentChildren,QueryList,ViewChild,NgZone, ChangeDetectorRef,ViewRef,ChangeDetectionStrategy} from '@angular/core';
 import {trigger,style,transition,animate, AnimationEvent, animation, useAnimation} from '@angular/animations';
 import {CommonModule} from '@angular/common';
-import {DomHandler} from 'primeng_atretiak/dom';
-import {Header,Footer,SharedModule} from 'primeng_atretiak/api';
-import {FocusTrapModule} from 'primeng_atretiak/focustrap';
+import {DomHandler} from '@nanitor/primeng/dom';
+import {Header,Footer,SharedModule} from '@nanitor/primeng/api';
+import {FocusTrapModule} from '@nanitor/primeng/focustrap';
 
 let idx: number = 0;
 

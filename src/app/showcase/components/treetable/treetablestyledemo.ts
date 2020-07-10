@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {NodeService} from '../../service/nodeservice';
-import {TreeNode} from 'primeng_atretiak/api';
+import {TreeNode} from '@nanitor/primeng/api';
 
 @Component({
     templateUrl: './treetablestyledemo.html',

@@ -4,10 +4,10 @@ import { By } from '@angular/platform-browser';
 import { Table, TableModule, EditableColumn } from './table';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Component } from '@angular/core';
-import { DropdownModule} from 'primeng_atretiak/dropdown';
+import { DropdownModule} from '@nanitor/primeng/dropdown';
 import { FormsModule } from '@angular/forms';
-import { SharedModule } from 'primeng_atretiak/api';
-import { ContextMenu, ContextMenuModule } from 'primeng_atretiak/contextmenu';
+import { SharedModule } from '@nanitor/primeng/api';
+import { ContextMenu, ContextMenuModule } from '@nanitor/primeng/contextmenu';
 import { RouterTestingModule } from '@angular/router/testing';
 
 @Component({

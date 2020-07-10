@@ -3,9 +3,9 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {CheckboxDemo} from './checkboxdemo';
 import {CheckboxDemoRoutingModule} from './checkboxdemo-routing.module';
-import {CheckboxModule} from 'primeng_atretiak/checkbox';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {CheckboxModule} from '@nanitor/primeng/checkbox';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

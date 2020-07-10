@@ -27,8 +27,8 @@
 */
 import {NgModule,Component,ElementRef,OnInit,OnDestroy,Input,forwardRef,Output,EventEmitter,ViewChild,ChangeDetectionStrategy} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DomHandler} from 'primeng_atretiak/dom';
-import {InputTextModule} from 'primeng_atretiak/inputtext';
+import {DomHandler} from '@nanitor/primeng/dom';
+import {InputTextModule} from '@nanitor/primeng/inputtext';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
 export const INPUTMASK_VALUE_ACCESSOR: any = {

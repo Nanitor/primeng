@@ -1,6 +1,6 @@
 import {Component,OnDestroy} from '@angular/core';
 import {DialogService} from '../../../components/dynamicdialog/dialogservice';
-import {MessageService} from 'primeng_atretiak/api';
+import {MessageService} from '@nanitor/primeng/api';
 import {CarsListDemo} from './carslistdemo';
 import {Car} from '../../components/domain/car';
 import { DynamicDialogRef } from '../../../components/dynamicdialog/dynamicdialog-ref';

@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ContextMenuDemo} from './contextmenudemo';
 import {ContextMenuDemoRoutingModule} from './contextmenudemo-routing.module';
-import {ContextMenuModule} from 'primeng_atretiak/contextmenu';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {ContextMenuModule} from '@nanitor/primeng/contextmenu';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

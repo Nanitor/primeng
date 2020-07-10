@@ -1,6 +1,6 @@
 import {NgModule,Directive,ElementRef,HostListener,Input,OnDestroy,DoCheck,NgZone} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DomHandler} from 'primeng_atretiak/dom';
+import {DomHandler} from '@nanitor/primeng/dom';
 
 @Directive({
     selector: '[pPassword]',

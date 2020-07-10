@@ -1,6 +1,6 @@
 import {NgModule,Component,Input,Output,EventEmitter,ChangeDetectionStrategy} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MenuItem} from 'primeng_atretiak/api';
+import {MenuItem} from '@nanitor/primeng/api';
 import {RouterModule} from '@angular/router';
 
 @Component({

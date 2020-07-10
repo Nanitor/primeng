@@ -1,7 +1,7 @@
 import { Component, Input, ElementRef, ViewChild, AfterContentInit, TemplateRef, ContentChildren, QueryList, NgModule, NgZone, EventEmitter, Output, ContentChild, ChangeDetectionStrategy } from '@angular/core';
-import { PrimeTemplate, SharedModule, Header, Footer } from 'primeng_atretiak/api';
+import { PrimeTemplate, SharedModule, Header, Footer } from '@nanitor/primeng/api';
 import { CommonModule } from '@angular/common';
-import { UniqueComponentId } from 'primeng_atretiak/utils';
+import { UniqueComponentId } from '@nanitor/primeng/utils';
 
 @Component({
 	selector: 'p-carousel',

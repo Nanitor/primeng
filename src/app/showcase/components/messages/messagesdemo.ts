@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Message,MessageService} from 'primeng_atretiak/api';
+import {Message,MessageService} from '@nanitor/primeng/api';
 
 @Component({
     templateUrl: './messagesdemo.html',

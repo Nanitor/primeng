@@ -8,10 +8,10 @@ import {BarChartDemo} from './barchart/barchartdemo';
 import {LineChartDemo} from './linechart/linechartdemo';
 import {PolarAreaChartDemo} from './polarareachart/polarareachartdemo';
 import {RadarChartDemo} from './radarchart/radarchartdemo';
-import {ChartModule} from 'primeng_atretiak/chart';
-import {ToastModule} from 'primeng_atretiak/toast';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {ChartModule} from '@nanitor/primeng/chart';
+import {ToastModule} from '@nanitor/primeng/toast';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

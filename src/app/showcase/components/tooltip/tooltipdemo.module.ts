@@ -2,10 +2,10 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TooltipDemo} from './tooltipdemo';
 import {TooltipDemoRoutingModule} from './tooltipdemo-routing.module';
-import {TooltipModule} from 'primeng_atretiak/tooltip';
-import {InputTextModule} from 'primeng_atretiak/inputtext';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {TooltipModule} from '@nanitor/primeng/tooltip';
+import {InputTextModule} from '@nanitor/primeng/inputtext';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

@@ -1,7 +1,7 @@
 import {NgModule,Component,AfterViewInit,AfterViewChecked,OnDestroy,Input,Output,EventEmitter,ViewChild,ElementRef,Renderer2,ChangeDetectionStrategy} from '@angular/core';
 import {trigger, state, style, transition, animate} from '@angular/animations';
 import {CommonModule} from '@angular/common';
-import {DomHandler} from 'primeng_atretiak/dom';
+import {DomHandler} from '@nanitor/primeng/dom';
 
 @Component({
     selector: 'p-sidebar',

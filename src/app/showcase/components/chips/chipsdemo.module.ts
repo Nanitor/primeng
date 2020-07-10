@@ -3,10 +3,10 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {ChipsDemo} from './chipsdemo';
 import {ChipsDemoRoutingModule} from './chipsdemo-routing.module';
-import {ChipsModule} from 'primeng_atretiak/chips';
-import {ButtonModule} from 'primeng_atretiak/button';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {ChipsModule} from '@nanitor/primeng/chips';
+import {ButtonModule} from '@nanitor/primeng/button';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

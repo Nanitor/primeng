@@ -1,7 +1,7 @@
 import {NgModule,Component,ElementRef,AfterViewInit,Input,Output,EventEmitter,ContentChild,forwardRef,ChangeDetectionStrategy} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SharedModule,Header} from 'primeng_atretiak/api'
-import {DomHandler} from 'primeng_atretiak/dom';
+import {SharedModule,Header} from '@nanitor/primeng/api'
+import {DomHandler} from '@nanitor/primeng/dom';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 import * as Quill from "quill";
 

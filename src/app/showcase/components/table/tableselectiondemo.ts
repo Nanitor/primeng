@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../../components/domain/car';
 import { CarService } from '../../service/carservice';
-import {MessageService} from 'primeng_atretiak/api';
+import {MessageService} from '@nanitor/primeng/api';
 
 @Component({
     templateUrl: './tableselectiondemo.html',

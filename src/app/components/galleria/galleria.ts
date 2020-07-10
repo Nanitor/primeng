@@ -1,8 +1,8 @@
 import {NgModule,Component,ElementRef,OnDestroy,Input,Output,EventEmitter,ChangeDetectionStrategy, ViewChild, ContentChildren, QueryList, TemplateRef, OnInit, OnChanges, AfterContentChecked, SimpleChanges} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import { SharedModule, PrimeTemplate } from 'primeng_atretiak/api';
-import { UniqueComponentId } from 'primeng_atretiak/utils';
-import { DomHandler } from 'primeng_atretiak/dom';
+import { SharedModule, PrimeTemplate } from '@nanitor/primeng/api';
+import { UniqueComponentId } from '@nanitor/primeng/utils';
+import { DomHandler } from '@nanitor/primeng/dom';
 
 @Component({
     selector: 'p-galleria',

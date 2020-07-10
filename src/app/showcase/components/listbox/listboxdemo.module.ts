@@ -3,10 +3,10 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {ListboxDemo} from './listboxdemo';
 import {ListboxDemoRoutingModule} from './listboxdemo-routing.module';
-import {ListboxModule} from 'primeng_atretiak/listbox';
-import {ButtonModule} from 'primeng_atretiak/button';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {ListboxModule} from '@nanitor/primeng/listbox';
+import {ButtonModule} from '@nanitor/primeng/button';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

@@ -1,6 +1,6 @@
 import {NgModule,Component,ElementRef,Input,Renderer2,AfterViewInit,OnDestroy,ChangeDetectorRef,ChangeDetectionStrategy} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DomHandler} from 'primeng_atretiak/dom';
+import {DomHandler} from '@nanitor/primeng/dom';
 
 @Component({
     selector: 'p-lightbox',

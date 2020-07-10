@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MegaMenuItem} from 'primeng_atretiak/api';
+import {MegaMenuItem} from '@nanitor/primeng/api';
 
 @Component({
     templateUrl: './megamenudemo.html'

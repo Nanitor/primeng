@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { PickList } from './picklist';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Component, EventEmitter } from '@angular/core';
-import { Button } from 'primeng_atretiak/button';
+import { Button } from '@nanitor/primeng/button';
 
 @Component({
 	template: `<p-pickList [source]="sourceCars" [target]="targetCars">

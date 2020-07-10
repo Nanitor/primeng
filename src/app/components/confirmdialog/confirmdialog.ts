@@ -1,11 +1,11 @@
 import {NgModule,Component,ElementRef,OnDestroy,Input,EventEmitter,Renderer2,ContentChild,NgZone,ViewChild,ChangeDetectorRef,ChangeDetectionStrategy} from '@angular/core';
 import {trigger,style,transition,animate,AnimationEvent, useAnimation, animation} from '@angular/animations';
 import {CommonModule} from '@angular/common';
-import {DomHandler} from 'primeng_atretiak/dom';
-import {Footer,SharedModule} from 'primeng_atretiak/api';
-import {ButtonModule} from 'primeng_atretiak/button';
-import {Confirmation} from 'primeng_atretiak/api';
-import {ConfirmationService} from 'primeng_atretiak/api';
+import {DomHandler} from '@nanitor/primeng/dom';
+import {Footer,SharedModule} from '@nanitor/primeng/api';
+import {ButtonModule} from '@nanitor/primeng/button';
+import {Confirmation} from '@nanitor/primeng/api';
+import {ConfirmationService} from '@nanitor/primeng/api';
 import {Subscription}   from 'rxjs';
 
 const showAnimation = animation([

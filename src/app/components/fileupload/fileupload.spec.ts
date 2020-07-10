@@ -2,10 +2,10 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FileUpload } from './fileupload';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ProgressBarModule} from 'primeng_atretiak/progressbar';
-import { ButtonModule } from 'primeng_atretiak/button';
-import { PrimeTemplate} from 'primeng_atretiak/api';
-import { MessagesModule } from 'primeng_atretiak/messages';
+import { ProgressBarModule} from '@nanitor/primeng/progressbar';
+import { ButtonModule } from '@nanitor/primeng/button';
+import { PrimeTemplate} from '@nanitor/primeng/api';
+import { MessagesModule } from '@nanitor/primeng/messages';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('FileUpload', () => {

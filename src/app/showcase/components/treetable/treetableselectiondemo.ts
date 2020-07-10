@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { TreeNode } from 'primeng_atretiak/api';
+import { TreeNode } from '@nanitor/primeng/api';
 import { NodeService } from '../../service/nodeservice';
-import { MessageService } from 'primeng_atretiak/api';
+import { MessageService } from '@nanitor/primeng/api';
 
 @Component({
     templateUrl: './treetableselectiondemo.html',

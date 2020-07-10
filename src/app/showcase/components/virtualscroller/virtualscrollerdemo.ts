@@ -1,7 +1,7 @@
 import {Component,OnInit} from '@angular/core';
 import {Car} from '../../components/domain/car';
 import {CarService} from '../../service/carservice';
-import {LazyLoadEvent,SelectItem} from 'primeng_atretiak/api';
+import {LazyLoadEvent,SelectItem} from '@nanitor/primeng/api';
 
 @Component({
     templateUrl: './virtualscrollerdemo.html',

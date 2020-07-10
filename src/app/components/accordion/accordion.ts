@@ -2,8 +2,8 @@ import { NgModule, Component, ElementRef, AfterContentInit, OnDestroy, Input, Ou
     ContentChildren, QueryList, ChangeDetectorRef, Inject, forwardRef, TemplateRef, ViewRef, ChangeDetectionStrategy} from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { SharedModule, Header, PrimeTemplate } from 'primeng_atretiak/api';
-import { BlockableUI } from 'primeng_atretiak/api';
+import { SharedModule, Header, PrimeTemplate } from '@nanitor/primeng/api';
+import { BlockableUI } from '@nanitor/primeng/api';
 import { Subscription } from 'rxjs';
 
 let idx: number = 0;

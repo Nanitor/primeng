@@ -1,9 +1,9 @@
 import {NgModule,Component,Input,Output,OnInit,AfterViewInit,AfterContentInit,OnDestroy,ElementRef,ViewChild,EventEmitter,ContentChildren,QueryList,TemplateRef,ChangeDetectionStrategy, NgZone, ChangeDetectorRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Message} from 'primeng_atretiak/api';
-import {DomHandler} from 'primeng_atretiak/dom';
-import {PrimeTemplate,SharedModule} from 'primeng_atretiak/api';
-import {MessageService} from 'primeng_atretiak/api';
+import {Message} from '@nanitor/primeng/api';
+import {DomHandler} from '@nanitor/primeng/dom';
+import {PrimeTemplate,SharedModule} from '@nanitor/primeng/api';
+import {MessageService} from '@nanitor/primeng/api';
 import {Subscription} from 'rxjs';
 import {trigger,state,style,transition,animate,query,animateChild,AnimationEvent} from '@angular/animations';
 

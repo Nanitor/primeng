@@ -3,10 +3,10 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {InputTextDemo} from './inputtextdemo';
 import {InputTextDemoRoutingModule} from './inputtextdemo-routing.module';
-import {InputTextModule} from 'primeng_atretiak/inputtext';
-import {ButtonModule} from 'primeng_atretiak/button';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {InputTextModule} from '@nanitor/primeng/inputtext';
+import {ButtonModule} from '@nanitor/primeng/button';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

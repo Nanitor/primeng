@@ -1,6 +1,6 @@
 import {NgModule,Directive,OnDestroy,AfterViewInit,ElementRef,HostListener,Input,Output,EventEmitter,NgZone} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DomHandler} from 'primeng_atretiak/dom';
+import {DomHandler} from '@nanitor/primeng/dom';
 
 @Directive({
     selector: '[pDraggable]'

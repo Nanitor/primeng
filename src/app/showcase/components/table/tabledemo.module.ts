@@ -28,19 +28,19 @@ import { TableStateDemo } from './tablestatedemo';
 import { TableStickyDemo } from './tablestickydemo';
 import { TableRowGroupDemo } from './tablerowgroupdemo';
 import { TableDemoRoutingModule } from './tabledemo-routing.module';
-import { TableModule } from 'primeng_atretiak/table';
-import { SliderModule } from 'primeng_atretiak/slider';
-import { MultiSelectModule } from 'primeng_atretiak/multiselect';
-import { ContextMenuModule } from 'primeng_atretiak/contextmenu';
-import { ToastModule } from 'primeng_atretiak/toast';
-import { ButtonModule } from 'primeng_atretiak/button';
-import { CalendarModule } from 'primeng_atretiak/calendar';
-import { DialogModule } from 'primeng_atretiak/dialog';
-import { DropdownModule } from 'primeng_atretiak/dropdown';
-import { InputTextModule } from 'primeng_atretiak/inputtext';
-import { ProgressBarModule } from 'primeng_atretiak/progressbar';
-import { TabViewModule } from 'primeng_atretiak/tabview';
-import { CodeHighlighterModule } from 'primeng_atretiak/codehighlighter';
+import { TableModule } from '@nanitor/primeng/table';
+import { SliderModule } from '@nanitor/primeng/slider';
+import { MultiSelectModule } from '@nanitor/primeng/multiselect';
+import { ContextMenuModule } from '@nanitor/primeng/contextmenu';
+import { ToastModule } from '@nanitor/primeng/toast';
+import { ButtonModule } from '@nanitor/primeng/button';
+import { CalendarModule } from '@nanitor/primeng/calendar';
+import { DialogModule } from '@nanitor/primeng/dialog';
+import { DropdownModule } from '@nanitor/primeng/dropdown';
+import { InputTextModule } from '@nanitor/primeng/inputtext';
+import { ProgressBarModule } from '@nanitor/primeng/progressbar';
+import { TabViewModule } from '@nanitor/primeng/tabview';
+import { CodeHighlighterModule } from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

@@ -2,12 +2,12 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {KeyFilterDemo} from './keyfilterdemo';
 import {FormsModule} from '@angular/forms';
-import {MessageModule} from 'primeng_atretiak/message';
+import {MessageModule} from '@nanitor/primeng/message';
 import {KeyFilterDemoRoutingModule} from './keyfilterdemo-routing.module';
-import {KeyFilterModule} from 'primeng_atretiak/keyfilter';
-import {InputTextModule} from 'primeng_atretiak/inputtext';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {KeyFilterModule} from '@nanitor/primeng/keyfilter';
+import {InputTextModule} from '@nanitor/primeng/inputtext';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

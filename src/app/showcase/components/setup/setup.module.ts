@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SetupComponent} from './setup.component';
 import {SetupRoutingModule} from './setup-routing.module';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
   imports: [

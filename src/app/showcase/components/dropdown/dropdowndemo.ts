@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {SelectItem} from 'primeng_atretiak/api';
-import {SelectItemGroup} from 'primeng_atretiak/api';
+import {SelectItem} from '@nanitor/primeng/api';
+import {SelectItemGroup} from '@nanitor/primeng/api';
 
 interface City {
     name: string,

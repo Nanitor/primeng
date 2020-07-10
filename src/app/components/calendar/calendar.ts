@@ -2,9 +2,9 @@ import {NgModule,Component,ElementRef,OnDestroy,OnInit,Input,Output,EventEmitter
         ViewChild,ChangeDetectorRef,TemplateRef,ContentChildren,QueryList,NgZone,ChangeDetectionStrategy} from '@angular/core';
 import {trigger,state,style,transition,animate,AnimationEvent} from '@angular/animations';
 import {CommonModule} from '@angular/common';
-import {ButtonModule} from 'primeng_atretiak/button';
-import {DomHandler} from 'primeng_atretiak/dom';
-import {SharedModule,PrimeTemplate} from 'primeng_atretiak/api';
+import {ButtonModule} from '@nanitor/primeng/button';
+import {DomHandler} from '@nanitor/primeng/dom';
+import {SharedModule,PrimeTemplate} from '@nanitor/primeng/api';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
 export const CALENDAR_VALUE_ACCESSOR: any = {

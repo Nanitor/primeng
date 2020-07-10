@@ -2,11 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {InplaceDemo} from './inplacedemo';
 import {InplaceDemoRoutingModule} from './inplacedemo-routing.module';
-import {InplaceModule} from 'primeng_atretiak/inplace';
-import {InputTextModule} from 'primeng_atretiak/inputtext';
-import {TableModule} from 'primeng_atretiak/table';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {InplaceModule} from '@nanitor/primeng/inplace';
+import {InputTextModule} from '@nanitor/primeng/inputtext';
+import {TableModule} from '@nanitor/primeng/table';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

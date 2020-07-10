@@ -1,8 +1,8 @@
 import {NgModule,Component,ElementRef,OnDestroy,Input,Output,EventEmitter,Renderer2,ViewChild,Inject,forwardRef,ChangeDetectorRef,ChangeDetectionStrategy} from '@angular/core';
 import {trigger,state,style,transition,animate,AnimationEvent} from '@angular/animations';
 import {CommonModule} from '@angular/common';
-import {DomHandler} from 'primeng_atretiak/dom';
-import {MenuItem} from 'primeng_atretiak/api';
+import {DomHandler} from '@nanitor/primeng/dom';
+import {MenuItem} from '@nanitor/primeng/api';
 import {RouterModule} from '@angular/router';
 
 @Component({

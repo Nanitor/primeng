@@ -2,11 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BlockUIDemo} from './blockuidemo';
 import {BlockUIDemoRoutingModule} from './blockuidemo-routing.module';
-import {BlockUIModule} from 'primeng_atretiak/blockui';
-import {ButtonModule} from 'primeng_atretiak/button';
-import {PanelModule} from 'primeng_atretiak/panel';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {BlockUIModule} from '@nanitor/primeng/blockui';
+import {ButtonModule} from '@nanitor/primeng/button';
+import {PanelModule} from '@nanitor/primeng/panel';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

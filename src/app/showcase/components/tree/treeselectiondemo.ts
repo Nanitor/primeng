@@ -1,7 +1,7 @@
 import {Component,OnInit} from '@angular/core';
 import {NodeService} from '../../service/nodeservice';
-import {TreeNode} from 'primeng_atretiak/api';
-import {MessageService} from 'primeng_atretiak/api';
+import {TreeNode} from '@nanitor/primeng/api';
+import {MessageService} from '@nanitor/primeng/api';
 
 @Component({
     templateUrl: './treeselectiondemo.html',

@@ -1,7 +1,7 @@
 import {NgModule,Component,Input,Output,EventEmitter,forwardRef,ChangeDetectorRef,ContentChild,TemplateRef,SimpleChanges,OnChanges,ChangeDetectionStrategy} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SelectItem} from 'primeng_atretiak/api';
-import {ObjectUtils} from 'primeng_atretiak/utils';
+import {SelectItem} from '@nanitor/primeng/api';
+import {ObjectUtils} from '@nanitor/primeng/utils';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
 export const SELECTBUTTON_VALUE_ACCESSOR: any = {

@@ -3,9 +3,9 @@ import {CommonModule} from '@angular/common';
 import {FormsModule}    from '@angular/forms'
 import {AutoCompleteDemo} from './autocompletedemo';
 import {AutoCompleteDemoRoutingModule} from './autocompletedemo-routing.module';
-import {AutoCompleteModule} from 'primeng_atretiak/autocomplete';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {AutoCompleteModule} from '@nanitor/primeng/autocomplete';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

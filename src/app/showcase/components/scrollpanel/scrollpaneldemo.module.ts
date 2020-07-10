@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ScrollPanelDemo} from './scrollpaneldemo';
-import {ScrollPanelModule} from 'primeng_atretiak/scrollpanel';
+import {ScrollPanelModule} from '@nanitor/primeng/scrollpanel';
 import {ScrollPanelDemoRoutingModule} from './scrollpaneldemo-routing.module';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

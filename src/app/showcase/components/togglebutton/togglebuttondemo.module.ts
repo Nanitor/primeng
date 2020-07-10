@@ -3,9 +3,9 @@ import {CommonModule} from '@angular/common';
 import {FormsModule}  from '@angular/forms';
 import {ToggleButtonDemo} from './togglebuttondemo';
 import {ToggleButtonDemoRoutingModule} from './togglebuttondemo-routing.module';
-import {ToggleButtonModule} from 'primeng_atretiak/togglebutton';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {ToggleButtonModule} from '@nanitor/primeng/togglebutton';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

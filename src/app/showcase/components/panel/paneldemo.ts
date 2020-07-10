@@ -1,6 +1,6 @@
 import {Component,OnInit} from '@angular/core';
-import {MessageService} from 'primeng_atretiak/api';
-import {MenuItem} from 'primeng_atretiak/api';
+import {MessageService} from '@nanitor/primeng/api';
+import {MenuItem} from '@nanitor/primeng/api';
 
 @Component({
     templateUrl: './paneldemo.html',

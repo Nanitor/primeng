@@ -4,11 +4,11 @@ import {DynamicDialogModule} from '../../../components/dynamicdialog/dynamicdial
 import {DynamicDialogDemo} from './dynamicdialogdemo';
 import {DynamicDialogDemoRoutingModule} from './dynamicdialogdemo-routing.module';
 import {CarsListDemo} from './carslistdemo';
-import {ToastModule} from 'primeng_atretiak/toast';
-import {TableModule} from 'primeng_atretiak/table';
-import {ButtonModule} from 'primeng_atretiak/button';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {ToastModule} from '@nanitor/primeng/toast';
+import {TableModule} from '@nanitor/primeng/table';
+import {ButtonModule} from '@nanitor/primeng/button';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

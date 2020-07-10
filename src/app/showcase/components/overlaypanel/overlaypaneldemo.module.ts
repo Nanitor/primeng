@@ -2,11 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {OverlayPanelDemo} from './overlaypaneldemo';
 import {OverlayPanelDemoRoutingModule} from './overlaypaneldemo-routing.module';
-import {OverlayPanelModule} from 'primeng_atretiak/overlaypanel';
-import {ButtonModule} from 'primeng_atretiak/button';
-import {TableModule} from 'primeng_atretiak/table';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {OverlayPanelModule} from '@nanitor/primeng/overlaypanel';
+import {ButtonModule} from '@nanitor/primeng/button';
+import {TableModule} from '@nanitor/primeng/table';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

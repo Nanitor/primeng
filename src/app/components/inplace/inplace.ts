@@ -1,6 +1,6 @@
 import {NgModule,Component,Input,Output,EventEmitter,ChangeDetectionStrategy} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ButtonModule} from 'primeng_atretiak/button';
+import {ButtonModule} from '@nanitor/primeng/button';
 
 @Component({
     selector: 'p-inplaceDisplay',

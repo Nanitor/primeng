@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PickListDemo} from './picklistdemo';
 import {PickListDemoRoutingModule} from './picklistdemo-routing.module';
-import {PickListModule} from 'primeng_atretiak/picklist';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {PickListModule} from '@nanitor/primeng/picklist';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

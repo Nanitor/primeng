@@ -3,9 +3,9 @@ import {CommonModule} from '@angular/common';
 import {FormsModule}    from '@angular/forms'
 import {ColorPickerDemo} from './colorpickerdemo';
 import {ColorPickerDemoRoutingModule} from './colorpickerdemo-routing.module';
-import {ColorPickerModule} from 'primeng_atretiak/colorpicker';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {ColorPickerModule} from '@nanitor/primeng/colorpicker';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

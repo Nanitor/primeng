@@ -3,8 +3,8 @@ import { By } from '@angular/platform-browser';
 import { TabView, TabPanel, TabViewNav } from './tabview';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Component } from '@angular/core';
-import { Tooltip } from 'primeng_atretiak/tooltip';
-import { PrimeTemplate } from 'primeng_atretiak/api';
+import { Tooltip } from '@nanitor/primeng/tooltip';
+import { PrimeTemplate } from '@nanitor/primeng/api';
 
 @Component({
     template: `<p-tabView>

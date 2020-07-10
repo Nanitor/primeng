@@ -2,11 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DeferDemo} from './deferdemo';
 import {DeferDemoRoutingModule} from './deferdemo-routing.module';
-import {DeferModule} from 'primeng_atretiak/defer';
-import {TableModule} from 'primeng_atretiak/table';
-import {ToastModule} from 'primeng_atretiak/toast';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {DeferModule} from '@nanitor/primeng/defer';
+import {TableModule} from '@nanitor/primeng/table';
+import {ToastModule} from '@nanitor/primeng/toast';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

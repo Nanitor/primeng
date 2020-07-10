@@ -1,5 +1,5 @@
 import {Component,OnInit} from '@angular/core';
-import {MessageService} from 'primeng_atretiak/api';
+import {MessageService} from '@nanitor/primeng/api';
 
 @Component({
     templateUrl: './progressbardemo.html',

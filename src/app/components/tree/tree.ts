@@ -3,14 +3,14 @@ import {NgModule,Component,Input,AfterContentInit,OnDestroy,Output,EventEmitter,
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {Optional} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {TreeNode} from 'primeng_atretiak/api';
-import {SharedModule} from 'primeng_atretiak/api';
-import {PrimeTemplate} from 'primeng_atretiak/api';
-import {TreeDragDropService} from 'primeng_atretiak/api';
+import {TreeNode} from '@nanitor/primeng/api';
+import {SharedModule} from '@nanitor/primeng/api';
+import {PrimeTemplate} from '@nanitor/primeng/api';
+import {TreeDragDropService} from '@nanitor/primeng/api';
 import {Subscription} from 'rxjs';
-import {BlockableUI} from 'primeng_atretiak/api';
-import {ObjectUtils} from 'primeng_atretiak/utils';
-import {DomHandler} from 'primeng_atretiak/dom';
+import {BlockableUI} from '@nanitor/primeng/api';
+import {ObjectUtils} from '@nanitor/primeng/utils';
+import {DomHandler} from '@nanitor/primeng/dom';
 
 @Component({
     selector: 'p-treeNode',

@@ -2,11 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PanelDemo} from './paneldemo';
 import {PanelDemoRoutingModule} from './paneldemo-routing.module';
-import {PanelModule} from 'primeng_atretiak/panel';
-import {ToastModule} from 'primeng_atretiak/toast';
-import {SplitButtonModule} from 'primeng_atretiak/splitbutton';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {PanelModule} from '@nanitor/primeng/panel';
+import {ToastModule} from '@nanitor/primeng/toast';
+import {SplitButtonModule} from '@nanitor/primeng/splitbutton';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [

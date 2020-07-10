@@ -4,7 +4,7 @@ import { AutoComplete } from './autocomplete';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng_atretiak/button';
+import { ButtonModule } from '@nanitor/primeng/button';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 @Component({

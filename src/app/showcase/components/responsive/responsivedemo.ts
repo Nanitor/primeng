@@ -3,7 +3,7 @@ import {Car} from '../../components/domain/car';
 import {CarService} from '../../service/carservice';
 import {NodeService} from '../../service/nodeservice';
 import {CountryService} from '../../service/countryservice';
-import {SelectItem,MenuItem,TreeNode} from 'primeng_atretiak/api';
+import {SelectItem,MenuItem,TreeNode} from '@nanitor/primeng/api';
 
 @Component({
     templateUrl: './responsivedemo.html',

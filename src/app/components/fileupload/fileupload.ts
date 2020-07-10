@@ -2,13 +2,13 @@ import {NgModule,Component,OnDestroy,Input,Output,EventEmitter,TemplateRef,After
             ContentChildren,QueryList,ViewChild,ElementRef,NgZone,ChangeDetectionStrategy} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DomSanitizer} from '@angular/platform-browser';
-import {ButtonModule} from 'primeng_atretiak/button';
-import {MessagesModule} from 'primeng_atretiak/messages';
-import {ProgressBarModule} from 'primeng_atretiak/progressbar';
-import {DomHandler} from 'primeng_atretiak/dom';
-import {Message} from 'primeng_atretiak/api';
-import {PrimeTemplate,SharedModule} from 'primeng_atretiak/api';
-import {BlockableUI} from 'primeng_atretiak/api';
+import {ButtonModule} from '@nanitor/primeng/button';
+import {MessagesModule} from '@nanitor/primeng/messages';
+import {ProgressBarModule} from '@nanitor/primeng/progressbar';
+import {DomHandler} from '@nanitor/primeng/dom';
+import {Message} from '@nanitor/primeng/api';
+import {PrimeTemplate,SharedModule} from '@nanitor/primeng/api';
+import {BlockableUI} from '@nanitor/primeng/api';
 import {HttpClient, HttpEvent, HttpEventType, HttpHeaders} from "@angular/common/http";
 
 @Component({

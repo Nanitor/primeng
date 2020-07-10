@@ -3,9 +3,9 @@ import {CommonModule} from '@angular/common';
 import {FormsModule}  from '@angular/forms';
 import {RatingDemo} from './ratingdemo';
 import {RatingDemoRoutingModule} from './ratingdemo-routing.module';
-import {RatingModule} from 'primeng_atretiak/rating';
-import {TabViewModule} from 'primeng_atretiak/tabview';
-import {CodeHighlighterModule} from 'primeng_atretiak/codehighlighter';
+import {RatingModule} from '@nanitor/primeng/rating';
+import {TabViewModule} from '@nanitor/primeng/tabview';
+import {CodeHighlighterModule} from '@nanitor/primeng/codehighlighter';
 
 @NgModule({
 	imports: [
