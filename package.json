@@ -12,8 +12,7 @@
     "build-lib": "ng build primeng-library && gulp build-assets"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/Nanitor/primeng.git"
+    "url": "git@github.com:Nanitor/primeng.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
